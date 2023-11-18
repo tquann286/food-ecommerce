@@ -1,43 +1,32 @@
 <?php include('partials/menu.php'); ?>
 
-<!-- Main Content Section Starts -->
-<div class="main-content">
+        <!-- Main Content Section Starts -->
+        <div class="main-content">
             <div class="wrapper">
                 <h1>Dashboard</h1>
-                <br><br>
-                
-                <br><br>
 
                 <div class="col-4 text-center">
-
-                    
-
+                    <h1>5</h1>
                     <br />
                     Categories
                 </div>
 
                 <div class="col-4 text-center">
-
-                    
-
+                    <h1>5</h1>
                     <br />
-                    Foods
+                    Categories
                 </div>
 
                 <div class="col-4 text-center">
-                    
-                    
-
+                    <h1>5</h1>
                     <br />
-                    Total Orders
+                    Categories
                 </div>
 
                 <div class="col-4 text-center">
-                    
-                    
-
+                    <h1>5</h1>
                     <br />
-                    Revenue Generated
+                    Categories
                 </div>
 
                 <div class="clearfix"></div>
