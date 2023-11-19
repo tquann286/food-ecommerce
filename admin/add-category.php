@@ -40,25 +40,9 @@
           </td>
         </tr>
 
-        <tr>
-          <td>Featured: </td>
-          <td>
-            <input id="featured-yes" type="radio" name="featured" value="Có">
-            <label for="featured-yes">Có</label>
-            <input id="featured-No" type="radio" name="featured" value="Không">
-            <label for="featured-No">Không</label>
-          </td>
-        </tr>
+        <?php include('forms/featured.php'); ?>
 
-        <tr>
-          <td>Active: </td>
-          <td>
-            <input id="active-yes" type="radio" name="active" value="Có">
-            <label for="active-yes">Có</label>
-            <input id="active-No" type="radio" name="active" value="Không">
-            <label for="active-No">Không</label>
-          </td>
-        </tr>
+        <?php include('forms/active.php'); ?>
 
         <tr>
           <td colspan="2">
