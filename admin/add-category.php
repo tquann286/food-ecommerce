@@ -43,20 +43,20 @@
         <tr>
           <td>Featured: </td>
           <td>
-            <input id="featured-yes" type="radio" name="featured" value="Yes"> 
-            <label for="featured-yes">Yes</label>
-            <input id="featured-No" type="radio" name="featured" value="No">
-            <label for="featured-No">No</label>
+            <input id="featured-yes" type="radio" name="featured" value="Có">
+            <label for="featured-yes">Có</label>
+            <input id="featured-No" type="radio" name="featured" value="Không">
+            <label for="featured-No">Không</label>
           </td>
         </tr>
 
         <tr>
           <td>Active: </td>
           <td>
-            <input id="active-yes" type="radio" name="active" value="Yes"> 
-            <label for="active-yes">Yes</label>
-            <input id="active-No" type="radio" name="active" value="No">
-            <label for="active-No">No</label>
+            <input id="active-yes" type="radio" name="active" value="Có">
+            <label for="active-yes">Có</label>
+            <input id="active-No" type="radio" name="active" value="Không">
+            <label for="active-No">Không</label>
           </td>
         </tr>
 
@@ -96,27 +96,31 @@
       if (isset($_FILES['image']['name'])) {
         $image_name = $_FILES['image']['name'];
 
-        //Get the Extension of our image (jpg, png, gif, etc) e.g. "specialfood1.jpg"
-        $image_name_parts = explode('.', $image_name);
-        $ext = end($image_name_parts);
+        // Upload the Image only if image is selected
+        if ($image_name != "") {
+          //Get the Extension of our image (jpg, png, gif, etc) e.g. "specialfood1.jpg"
+          $image_name_parts = explode('.', $image_name);
+          $ext = end($image_name_parts);
 
-        // Rename the Image
-        $image_name = "Food_Category_" . rand(000, 999) . '.' . $ext; // e.g. Food_Category_834.jpg
+          // Rename the Image
+          $image_name = "Food_Category_" . rand(0000, 9999) . '.' . $ext; // e.g. Food_Category_834.jpg
+    
+          $source_path = $_FILES['image']['tmp_name'];
 
-        $source_path = $_FILES['image']['tmp_name'];
+          $destination_path = "../images/category/" . $image_name;
 
-        $destination_path = "../images/category/" . $image_name;
+          // Upload the Image
+          $upload = move_uploaded_file($source_path, $destination_path);
 
-        // Upload the Image
-        $upload = move_uploaded_file($source_path, $destination_path);
-
-        // Check whether the image is uploaded or not
-        // If the image is not uploaded then we will stop the process and redirect with error message
-        if ($upload == false) {
-          $_SESSION['upload'] = "<div class='error'>Failed to Upload Image. </div>";
-          header('location:' . SITEURL . 'admin/add-category.php');
-          die();
+          // Check whether the image is uploaded or not
+// If the image is not uploaded then we will stop the process and redirect with error message
+          if ($upload == false) {
+            $_SESSION['upload'] = "<div class='error'>Failed to Upload Image. </div>";
+            header('location:' . SITEURL . 'admin/add-category.php');
+            die();
+          }
         }
+
       } else {
         // Don't Upload Image and set the image_name value as blank
         $image_name = "";

@@ -123,3 +123,8 @@ table tr td {
   margin: 10% auto;
   padding: 2%;
 }
+
+.no-image {
+  width: 100px;
+  height: 100px;
+}
