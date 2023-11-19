@@ -3,8 +3,10 @@
 <div class="main-content">
     <div class="wrapper">
         <h1>Manage Order</h1>
-    </div>
 
+                <br /><br /><br />
+    </div>
+    
 </div>
 
 <?php include('partials/footer.php'); ?>
