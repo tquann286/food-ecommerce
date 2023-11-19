@@ -7,8 +7,7 @@
     <br><br>
 
     <?php
-    if (isset($_SESSION['add']))
-    {
+    if (isset($_SESSION['add'])) {
       echo $_SESSION['add'];
       unset($_SESSION['add']);
     }
@@ -74,11 +73,11 @@ if (isset($_POST['submit'])) {
 
   if ($res == TRUE) {
     // echo "Data Inserted";
-    $_SESSION['add'] = "Admin Added Successfully";
+    $_SESSION['add'] = "<div class='success'>Admin Added Successfully.</div>";
     header("location:" . SITEURL . 'admin/manage-admin.php');
   } else {
     // echo "Fail to Insert Data";
-    $_SESSION['add'] = "Failed to Add Admin";
+    $_SESSION['add'] = "<div class='error'>Failed to Add Admin.</div>";
     header("location:" . SITEURL . 'admin/add-admin.php');
   }
 
