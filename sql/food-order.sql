@@ -81,7 +81,7 @@ CREATE TABLE `tbl_food` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  `price` decimal(10,2) NOT NULL,
+  `price` int(10) NOT NULL,
   `image_name` varchar(255) NOT NULL,
   `category_id` int(10) UNSIGNED NOT NULL,
   `featured` varchar(10) NOT NULL,
@@ -110,7 +110,7 @@ INSERT INTO `tbl_food` (`id`, `title`, `description`, `price`, `image_name`, `ca
 CREATE TABLE `tbl_order` (
   `id` int(10) UNSIGNED NOT NULL,
   `food` varchar(150) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
+  `price` int(10) NOT NULL,
   `qty` int(11) NOT NULL,
   `total` decimal(10,2) NOT NULL,
   `order_date` datetime NOT NULL,
