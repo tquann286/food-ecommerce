@@ -1,0 +1,1 @@
+<img class='no-image' src='../images/image404.png' alt='Không có hình ảnh' />
