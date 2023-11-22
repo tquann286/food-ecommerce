@@ -11,8 +11,8 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE DATABASE `db_food-order` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `db_food-order`;
+CREATE DATABASE `food-order` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `food-order`;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
