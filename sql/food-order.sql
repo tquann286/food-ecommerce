@@ -113,7 +113,7 @@ CREATE TABLE `tbl_order` (
   `food` varchar(150) NOT NULL,
   `price` int(10) NOT NULL,
   `qty` int(11) NOT NULL,
-  `total` decimal(10,2) NOT NULL,
+  `total` int(10) NOT NULL,
   `order_date` datetime NOT NULL,
   `status` varchar(50) NOT NULL,
   `customer_name` varchar(150) NOT NULL,
