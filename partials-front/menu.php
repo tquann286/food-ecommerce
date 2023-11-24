@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restaurant Website</title>
+  <title>Nhà hàng BatOn</title>
 
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -16,8 +16,8 @@
   <section class="navbar">
     <div class="container">
       <div class="logo">
-        <a href="#" title="Logo">
-          <img src="images/logo.png" alt="Restaurant Logo" class="img-responsive">
+        <a href="/" title="Logo">
+          <img src="images/logo.png" alt="Logo Nhà hàng" class="img-responsive">
         </a>
       </div>
 
