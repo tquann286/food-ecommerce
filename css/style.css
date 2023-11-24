@@ -193,6 +193,15 @@ fieldset {
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
+.error {
+  padding: 2%;
+  color: red;
+}
+.success {
+  padding: 2%;
+  color: green;
+}
+
 /* CSS for Mobile Size or Smaller Screen */
 
 @media only screen and (max-width: 768px) {
