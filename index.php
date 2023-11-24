@@ -16,7 +16,7 @@
 <!-- CAtegories Section Starts Here -->
 <section class="categories">
   <div class="container">
-    <h2 class="text-center">Explore Foods</h2>
+    <h2 class="text-center">Danh mục</h2>
 
     <?php
     // Display Categories from Database
