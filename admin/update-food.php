@@ -170,14 +170,16 @@ if (isset($_GET['id'])) {
             $remove = unlink($remove_path);
 
             if ($remove == false) {
-              $_SESSION['remove-failed'] = "<div class='error'>Faile to remove current image.</div>";
+              $_SESSION['remove-failed'] = "<div class='error'>Fail to remove current image.</div>";
               header('location:' . SITEURL . 'admin/manage-food.php');
               die();
             }
           }
+        } else {
+          $image_name = $current_image;
         }
       } else {
-        $image_name = $current_image;
+        $image_name = $current_image; //Default Image when Button is not Clicked
       }
 
       // Update the Food in Database

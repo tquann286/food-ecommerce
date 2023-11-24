@@ -10,6 +10,7 @@
 }
 .img-responsive {
   width: 100%;
+  aspect-ratio: 16 / 9;
 }
 .img-curve {
   border-radius: 15px;
@@ -188,6 +189,10 @@ fieldset {
   font-weight: bold;
 }
 
+.text-shadow {
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
 /* CSS for Mobile Size or Smaller Screen */
 
 @media only screen and (max-width: 768px) {
@@ -242,4 +247,9 @@ fieldset {
   .order {
     width: 100%;
   }
+}
+
+.no-image-1 {
+  width: 100px;
+  height: 100px;
 }
