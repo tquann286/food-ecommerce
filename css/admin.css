@@ -96,7 +96,6 @@ table tr td {
   color: #ff4757;
 }
 
-/* CSS for main-content */
 .main-content {
   background-color: #f1f2f6;
   padding: 3% 0;
@@ -110,7 +109,6 @@ table tr td {
   float: left;
 }
 
-/* CSS for Footer */
 .footer {
   background-color: #ff4757;
   color: white;
