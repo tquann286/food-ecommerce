@@ -2,7 +2,7 @@
 
 <div class="main-content">
     <div class="wrapper">
-        <h1>Manage Category</h1>
+        <h1>Quản lý Danh mục</h1>
 
         <?php
 
@@ -44,17 +44,17 @@
         ?>
         <br /><br />
 
-        <a href="<?php echo SITEURL; ?>admin/add-category.php" class="btn-primary">Add Category</a>
+        <a href="<?php echo SITEURL; ?>admin/add-category.php" class="btn-primary">Thêm Danh mục</a>
 
         <br /><br /><br />
 
         <table class="tbl-full">
             <tr>
-                <th>S.N.</th>
-                <th>Title</th>
-                <th>Image</th>
-                <th>Featured</th>
-                <th>Active</th>
+                <th>S.T.T.</th>
+                <th>Tiêu đề</th>
+                <th>Hình ảnh</th>
+                <th>Nổi bật</th>
+                <th>Hoạt động</th>
                 <th>Hành động</th>
             </tr>
 
@@ -111,9 +111,9 @@
                         </td>
                         <td>
                             <a href="<?php echo SITEURL; ?>admin/update-category.php?id=<?php echo $id; ?>"
-                                class="btn-secondary">Update Category</a>
+                                class="btn-secondary">Cập nhật Danh mục</a>
                             <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>"
-                                class="btn-danger">Delete Category</a>
+                                class="btn-danger">Xóa Danh mục</a>
                         </td>
                     </tr>
 
@@ -125,7 +125,7 @@
 
                 <tr>
                     <td colspan="6">
-                        <div class="error">No Category Added.</div>
+                        <div class="error">Chưa có Danh mục.</div>
                     </td>
                 </tr>
 
@@ -133,9 +133,6 @@
             }
 
             ?>
-
-
-
 
         </table>
     </div>

@@ -1,13 +1,13 @@
 <?php include('partials/menu.php'); ?>
 
-<!-- Main Content Section Starts -->
+<!-- Phần Nội dung chính Bắt đầu -->
 <div class="main-content">
     <div class="wrapper">
-        <h1>Manage Admin</h1>
+        <h1>Quản lý Admin</h1>
         <br />
 
         <?php
-        //Displaying Session Message
+        // Hiển thị Thông báo từ Session
         
         if (isset($_SESSION['add'])) {
             echo $_SESSION['add'];
@@ -32,14 +32,14 @@
 
         <br />
 
-        <a href="add-admin.php" class="btn-primary">Add Admin</a>
+        <a href="add-admin.php" class="btn-primary">Thêm Admin</a>
 
         <br /><br /><br />
 
 
         <table class="tbl-full">
             <tr>
-                <th>Stt</th>
+                <th>STT</th>
                 <th>Họ tên</th>
                 <th>Tên người dùng</th>
                 <th>Hành động</th>
@@ -50,12 +50,12 @@
             $res = mysqli_query($conn, $sql);
 
             if ($res == TRUE) {
-                // Count Rows to CHeck whether we have data in database or not
+                // Đếm số dòng để kiểm tra liệu có dữ liệu trong cơ sở dữ liệu hay không
                 $count = mysqli_num_rows($res);
 
                 $sn = 1;
 
-                //CHeck the num of rows
+                // Kiểm tra số lượng dòng
                 if ($count > 0) {
                     while ($rows = mysqli_fetch_assoc($res)) {
                         $id = $rows['id'];
@@ -76,11 +76,11 @@
                             </td>
                             <td>
                                 <a href="<?php echo SITEURL; ?>admin/update-password.php?id=<?php echo $id; ?>"
-                                    class="btn-primary">Change Password</a>
+                                    class="btn-primary">Đổi Mật khẩu</a>
                                 <a href="<?php echo SITEURL; ?>admin/update-admin.php?id=<?php echo $id; ?>"
-                                    class="btn-secondary">Update Admin</a>
+                                    class="btn-secondary">Cập nhật Admin</a>
                                 <a href="<?php echo SITEURL; ?>admin/delete-admin.php?id=<?php echo $id; ?>"
-                                    class="btn-danger">Delete Admin</a>
+                                    class="btn-danger">Xóa Admin</a>
                             </td>
                         </tr>
 
@@ -88,7 +88,7 @@
 
                     }
                 } else {
-                    // If Do not Have Data in Database
+                    // Nếu không có dữ liệu trong cơ sở dữ liệu
                 }
             }
 
@@ -98,6 +98,6 @@
 
     </div>
 </div>
-<!-- Main Content Section Ends -->
+<!-- Phần Nội dung chính Kết thúc -->
 
 <?php include('partials/footer.php'); ?>
