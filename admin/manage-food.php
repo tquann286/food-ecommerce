@@ -2,11 +2,11 @@
 
 <div class="main-content">
     <div class="wrapper">
-        <h1>Manage Food</h1>
+        <h1>Quản Lý Món Ăn</h1>
 
         <br /><br />
 
-        <a href="<?php echo SITEURL; ?>admin/add-food.php" class="btn-primary">Add Food</a>
+        <a href="<?php echo SITEURL; ?>admin/add-food.php" class="btn-primary">Thêm Món Ăn</a>
 
         <br /><br /><br />
 
@@ -41,12 +41,12 @@
         <table class="tbl-full">
             <tr>
                 <th>S.N.</th>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Image</th>
-                <th>Featured</th>
-                <th>Active</th>
-                <th>Actions</th>
+                <th>Tiêu Đề</th>
+                <th>Giá</th>
+                <th>Ảnh</th>
+                <th>Nổi Bật</th>
+                <th>Kích Hoạt</th>
+                <th>Hành Động</th>
             </tr>
 
             <?php
@@ -97,17 +97,17 @@
                         </td>
                         <td>
                             <a href="<?php echo SITEURL; ?>admin/update-food.php?id=<?php echo $id; ?>"
-                                class="btn-secondary">Update Food</a>
+                                class="btn-secondary">Cập Nhật Món Ăn</a>
                             <a href="<?php echo SITEURL; ?>admin/delete-food.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>"
-                                class="btn-danger">Delete Food</a>
+                                class="btn-danger">Xóa Món Ăn</a>
                         </td>
                     </tr>
 
                     <?php
                 }
             } else {
-                //Food not Added in Database
-                echo "<tr> <td colspan='7' class='error'> Food not Added Yet. </td> </tr>";
+                // Không có món ăn trong Cơ sở dữ liệu
+                echo "<tr> <td colspan='7' class='error'> Chưa Thêm Món Ăn. </td> </tr>";
             }
 
             ?>

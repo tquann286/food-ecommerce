@@ -117,8 +117,8 @@ if(isset($_SESSION['order'])) {
             <h4>
               <?php echo $title; ?>
             </h4>
-            <p class="food-price">vnd
-              <?php echo $price; ?>
+            <p class="food-price">
+              <?php echo $price; ?>vnd
             </p>
             <p class="food-detail">
               <?php echo $description; ?>

@@ -2,7 +2,7 @@
 
 <div class="main-content">
     <div class="wrapper">
-        <h1>Manage Order</h1>
+        <h1>Quản Lý Đơn Hàng</h1>
 
         <br />
 
@@ -17,21 +17,21 @@
         <table class="tbl-full">
             <tr>
                 <th>Stt</th>
-                <th>Food</th>
-                <th>Price</th>
-                <th>Qty.</th>
-                <th>Total</th>
-                <th>Order Date</th>
-                <th>Status</th>
-                <th>Customer Name</th>
-                <th>Contact</th>
+                <th>Món Ăn</th>
+                <th>Giá</th>
+                <th>Số Lượng</th>
+                <th>Tổng Cộng</th>
+                <th>Ngày Đặt Hàng</th>
+                <th>Trạng Thái</th>
+                <th>Tên Khách Hàng</th>
+                <th>Liên Hệ</th>
                 <th>Email</th>
-                <th>Address</th>
-                <th>Actions</th>
+                <th>Địa Chỉ</th>
+                <th>Hành Động</th>
             </tr>
 
             <?php
-            //Get all the orders from database
+            // Lấy tất cả đơn hàng từ cơ sở dữ liệu
             $sql = "SELECT * FROM tbl_order ORDER BY id DESC";
 
             $res = mysqli_query($conn, $sql);
@@ -104,7 +104,7 @@
                         </td>
                         <td>
                             <a href="<?php echo SITEURL; ?>admin/update-order.php?id=<?php echo $id; ?>"
-                                class="btn-secondary">Update Order</a>
+                                class="btn-secondary">Cập Nhật Đơn Hàng</a>
                         </td>
                     </tr>
 
@@ -112,7 +112,7 @@
 
                 }
             } else {
-                echo "<tr><td colspan='12' class='error'>Orders not Available</td></tr>";
+                echo "<tr><td colspan='12' class='error'>Không có đơn hàng</td></tr>";
             }
             ?>
 

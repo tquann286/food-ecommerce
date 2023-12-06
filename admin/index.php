@@ -1,9 +1,9 @@
 <?php include('partials/menu.php'); ?>
 
-<!-- Main Content Section Starts -->
+<!-- Phần Nội dung Chính Bắt Đầu -->
 <div class="main-content">
     <div class="wrapper">
-        <h1>Dashboard</h1>
+        <h1>Trang chủ</h1>
         <br><br>
         <?php
         if (isset($_SESSION['login'])) {
@@ -24,7 +24,7 @@
                 <?php echo $count; ?>
             </h1>
             <br />
-            Categories
+            Danh mục
         </div>
 
         <div class="col-4 text-center">
@@ -38,7 +38,7 @@
                 <?php echo $count2; ?>
             </h1>
             <br />
-            Foods
+            Món ăn
         </div>
 
         <div class="col-4 text-center">
@@ -52,13 +52,13 @@
                 <?php echo $count3; ?>
             </h1>
             <br />
-            Total Orders
+            Tổng đơn hàng
         </div>
 
         <div class="col-4 text-center">
             <?php
-            // Get Total Revenue Generated
-            //Aggregate Function in SQL
+            // Lấy tổng doanh thu
+            // Hàm tổng hợp trong SQL
             $sql4 = "SELECT SUM(total) AS Total FROM tbl_order WHERE status='Đã giao hàng'";
             $res4 = mysqli_query($conn, $sql4);
             $row4 = mysqli_fetch_assoc($res4);
@@ -70,13 +70,13 @@
                 <?php echo $total_revenue; ?>vnd
             </h1>
             <br />
-            Revenue Generated
+            Doanh thu đã tạo
         </div>
 
         <div class="clearfix"></div>
 
     </div>
 </div>
-<!-- Main Content Section Ends -->
+<!-- Phần Nội dung Chính Kết Thúc -->
 
 <?php include('partials/footer.php') ?>

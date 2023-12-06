@@ -3,14 +3,14 @@
 <html>
 
 <head>
-  <title>Login - Food Order System</title>
+  <title>Đăng Nhập - Trang Quản lý Hệ Thống Đặt Món Ăn</title>
   <link rel="stylesheet" href="../css/admin.css">
 </head>
 
 <body>
 
   <div class="login">
-    <h1 class="text-center">Login</h1>
+    <h1 class="text-center">Đăng Nhập</h1>
     <br><br>
 
     <?php
@@ -26,18 +26,18 @@
     ?>
     <br><br>
 
-    <!-- Login Form Starts Here -->
+    <!-- Biểu mẫu Đăng Nhập Bắt Đầu Tại Đây -->
     <form action="" method="POST" class="text-center">
-      Username: <br>
-      <input type="text" name="username" placeholder="Enter Username"><br><br>
+      Tên Đăng Nhập: <br>
+      <input type="text" name="username" placeholder="Nhập Tên Đăng Nhập"><br><br>
 
-      Password: <br>
-      <input type="password" name="password" placeholder="Enter Password"><br><br>
+      Mật Khẩu: <br>
+      <input type="password" name="password" placeholder="Nhập Mật Khẩu"><br><br>
 
-      <input type="submit" name="submit" value="Login" class="btn-primary">
+      <input type="submit" name="submit" value="Đăng Nhập" class="btn-primary">
       <br><br>
     </form>
-    <!-- Login Form Ends HEre -->
+    <!-- Biểu mẫu Đăng Nhập Kết Thúc Tại Đây -->
 
   </div>
 
@@ -55,16 +55,16 @@ if (isset($_POST['submit'])) {
 
   $res = mysqli_query($conn, $sql);
 
-  //4. Check whether the user exists or not
+  // 4. Kiểm tra xem người dùng có tồn tại hay không
   $count = mysqli_num_rows($res);
 
   if ($count == 1) {
-    $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
+    $_SESSION['login'] = "<div class='success'>Đăng Nhập Thành Công.</div>";
     $_SESSION['user'] = $username;
 
     header('location:' . SITEURL . 'admin/');
   } else {
-    $_SESSION['login'] = "<div class='error text-center'>Username or Password did not match.</div>";
+    $_SESSION['login'] = "<div class='error text-center'>Tên đăng nhập hoặc mật khẩu không khớp.</div>";
     header('location:' . SITEURL . 'admin/login.php');
   }
 
