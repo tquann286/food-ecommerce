@@ -2,7 +2,7 @@
 
 <div class="main-content">
   <div class="wrapper">
-    <h1>Add Admin</h1>
+    <h1>Thêm Admin</h1>
 
     <br><br>
 
@@ -17,29 +17,29 @@
 
       <table class="tbl-30">
         <tr>
-          <td>Full Name: </td>
+          <td>Họ và tên: </td>
           <td>
-            <input type="text" name="full_name" placeholder="Enter Your Name">
+            <input type="text" name="full_name" placeholder="Nhập tên của bạn">
           </td>
         </tr>
 
         <tr>
-          <td>Username: </td>
+          <td>Tên người dùng: </td>
           <td>
-            <input type="text" name="username" placeholder="Your Username">
+            <input type="text" name="username" placeholder="Tên người dùng của bạn">
           </td>
         </tr>
 
         <tr>
-          <td>Password: </td>
+          <td>Mật khẩu: </td>
           <td>
-            <input type="password" name="password" placeholder="Your Password">
+            <input type="password" name="password" placeholder="Mật khẩu của bạn">
           </td>
         </tr>
 
         <tr>
           <td colspan="2">
-            <input type="submit" name="submit" value="Add Admin" class="btn-secondary">
+            <input type="submit" name="submit" value="Thêm Admin" class="btn-secondary">
           </td>
         </tr>
 
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
 
   $full_name = $_POST['full_name'];
   $username = $_POST['username'];
-  $password = md5($_POST['password']); // Encrypt Password with MD5
+  $password = md5($_POST['password']); // Mã hóa mật khẩu bằng MD5
 
   $sql = "INSERT INTO tbl_admin SET 
             full_name='$full_name',
@@ -73,11 +73,11 @@ if (isset($_POST['submit'])) {
 
   if ($res == TRUE) {
     // echo "Data Inserted";
-    $_SESSION['add'] = "<div class='success'>Admin Added Successfully.</div>";
+    $_SESSION['add'] = "<div class='success'>Admin được thêm thành công.</div>";
     header("location:" . SITEURL . 'admin/manage-admin.php');
   } else {
     // echo "Fail to Insert Data";
-    $_SESSION['add'] = "<div class='error'>Failed to Add Admin.</div>";
+    $_SESSION['add'] = "<div class='error'>Thêm Admin không thành công.</div>";
     header("location:" . SITEURL . 'admin/add-admin.php');
   }
 

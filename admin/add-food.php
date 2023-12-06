@@ -107,13 +107,13 @@
       if (isset($_POST['featured'])) {
         $featured = $_POST['featured'];
       } else {
-        $featured = "No";
+        $featured = "Không";
       }
 
       if (isset($_POST['active'])) {
         $active = $_POST['active'];
       } else {
-        $active = "No";
+        $active = "Không";
       }
 
       // Upload the Image if selected
