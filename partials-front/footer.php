@@ -1,28 +1,24 @@
-<!-- social Section Starts Here -->
+<!-- Phần Mạng xã hội Bắt đầu Tại Đây -->
 <section class="social">
   <div class="container text-center">
     <ul>
       <li>
-        <a href="#"><img src="https://img.icons8.com/fluent/50/000000/facebook-new.png" /></a>
-      </li>
-      <li>
-        <a href="#"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" /></a>
-      </li>
-      <li>
-        <a href="#"><img src="https://img.icons8.com/fluent/48/000000/twitter.png" /></a>
+        <a href="https://github.com/tquann286/food-ecommerce" target="_blank" rel="noopener" class="git-icon">
+          <img src="https://img.icons8.com/fluent/48/000000/github.png" />
+        </a>
       </li>
     </ul>
   </div>
 </section>
-<!-- social Section Ends Here -->
+<!-- Phần Mạng xã hội Kết thúc Tại Đây -->
 
-<!-- footer Section Starts Here -->
+<!-- Phần Footer Bắt đầu Tại Đây -->
 <section class="footer">
   <div class="container text-center">
     <p>Trang web được phát triển bởi Nhóm BatOn</p>
   </div>
 </section>
-<!-- footer Section Ends Here -->
+<!-- Phần Footer Kết thúc Tại Đây -->
 
 </body>
 

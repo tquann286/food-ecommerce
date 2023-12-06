@@ -1,7 +1,7 @@
 <?php include('config/constants.php'); ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   <meta charset="UTF-8">
@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <!-- Navbar Section Starts Here -->
+  <!-- Phần Navbar Bắt đầu Tại Đây -->
   <section class="navbar">
     <div class="container">
       <div class="logo">
@@ -24,21 +24,21 @@
       <div class="menu text-right">
         <ul>
           <li>
-            <a href="<?php echo SITEURL; ?>">Home</a>
+            <a href="<?php echo SITEURL; ?>">Trang chủ</a>
           </li>
           <li>
-            <a href="<?php echo SITEURL; ?>categories.php">Categories</a>
+            <a href="<?php echo SITEURL; ?>categories.php">Danh mục</a>
           </li>
           <li>
-            <a href="<?php echo SITEURL; ?>foods.php">Foods</a>
+            <a href="<?php echo SITEURL; ?>foods.php">Món ăn</a>
           </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
+          <!-- <li>
+            <a href="#">Liên hệ</a>
+          </li> -->
         </ul>
       </div>
 
       <div class="clearfix"></div>
     </div>
   </section>
-  <!-- Navbar Section Ends Here -->
+  <!-- Phần Navbar Kết thúc Tại Đây -->
