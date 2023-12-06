@@ -2,7 +2,7 @@
 
 <div class="main-content">
   <div class="wrapper">
-    <h1>Add Food</h1>
+    <h1>Thêm Món Ăn</h1>
 
     <br><br>
 
@@ -18,35 +18,35 @@
       <table class="tbl-30">
 
         <tr>
-          <td>Title: </td>
+          <td>Tiêu Đề: </td>
           <td>
-            <input type="text" name="title" placeholder="Title of the Food">
+            <input type="text" name="title" placeholder="Tiêu đề món ăn">
           </td>
         </tr>
 
         <tr>
-          <td>Description: </td>
+          <td>Mô Tả: </td>
           <td>
-            <textarea name="description" cols="30" rows="5" placeholder="Description of the Food."></textarea>
+            <textarea name="description" cols="30" rows="5" placeholder="Mô tả món ăn"></textarea>
           </td>
         </tr>
 
         <tr>
-          <td>Price: </td>
+          <td>Giá: </td>
           <td>
             <input type="number" name="price">
           </td>
         </tr>
 
         <tr>
-          <td>Select Image: </td>
+          <td>Chọn Hình Ảnh: </td>
           <td>
             <input type="file" name="image">
           </td>
         </tr>
 
         <tr>
-          <td>Category: </td>
+          <td>Danh Mục: </td>
           <td>
             <select name="category">
 
@@ -72,7 +72,7 @@
                 }
               } else {
                 ?>
-                <option value="0">No Category Found</option>
+                <option value="0">Không Tìm Thấy Danh Mục</option>
                 <?php
               }
               ?>
@@ -87,7 +87,7 @@
 
         <tr>
           <td colspan="2">
-            <input type="submit" name="submit" value="Add Food" class="btn-secondary">
+            <input type="submit" name="submit" value="Thêm Món Ăn" class="btn-secondary">
           </td>
         </tr>
 
@@ -116,30 +116,31 @@
         $active = "Không";
       }
 
-      // Upload the Image if selected
+      // Upload hình ảnh nếu được chọn
       if (isset($_FILES['image']['name'])) {
         $image_name = $_FILES['image']['name'];
 
-        //Check Whether the Image is Selected or not and upload image only if selected
+        // Kiểm tra xem ảnh có được chọn hay không và chỉ tải lên ảnh nếu được chọn
         if ($image_name != "") {
-          //Get the extension of selected image (jpg, png, gif, etc.) "vijay-thapa.jpg" vijay-thapa jpg
+          // Lấy phần mở rộng của ảnh được chọn (jpg, png, gif, v.v.) "vijay-thapa.jpg" vijay-thapa jpg
           $image_name_parts = explode('.', $image_name);
           $ext = end($image_name_parts);
 
           $image_name = "Food-Name-" . rand(0000, 9999) . "." . $ext; // Ví dụ: "Food-Name-657.jpg"
     
-          // Source path is the current location of the image
+          // Đường dẫn nguồn là vị trí hiện tại của ảnh
           $src = $_FILES['image']['tmp_name'];
 
-          //Destination Path for the image to be uploaded
+          // Đường dẫn Đích cho ảnh sẽ được tải lên
           $dst = "../images/food/" . $image_name;
 
-          // Upload the food image
+          // Tải ảnh lên
           $upload = move_uploaded_file($src, $dst);
 
-          //check whether image uploaded of not
+          // Kiểm tra xem ảnh có được tải lên không
+          // Nếu ảnh không được tải lên, chúng ta sẽ dừng quá trình và chuyển hướng với thông báo lỗi
           if ($upload == false) {
-            $_SESSION['upload'] = "<div class='error'>Failed to Upload Image.</div>";
+            $_SESSION['upload'] = "<div class='error'>Không thể tải lên ảnh.</div>";
             header('location:' . SITEURL . 'admin/add-food.php');
             die();
           }
@@ -150,7 +151,7 @@
         $image_name = "";
       }
 
-      // For Numerical we do not need to pass value inside quotes '' But for string value it is compulsory to add quotes ''
+      // Đối với giá trị số, chúng ta không cần đặt giá trị trong dấu ngoặc '' nhưng đối với giá trị chuỗi, việc thêm dấu ngoặc '' là bắt buộc ''
       $sql2 = "INSERT INTO tbl_food SET 
                     title = '$title',
                     description = '$description',
@@ -164,10 +165,10 @@
       $res2 = mysqli_query($conn, $sql2);
 
       if ($res2 == true) {
-        $_SESSION['add'] = "<div class='success'>Food Added Successfully.</div>";
+        $_SESSION['add'] = "<div class='success'>Món Ăn Đã Được Thêm Thành Công.</div>";
         header('location:' . SITEURL . 'admin/manage-food.php');
       } else {
-        $_SESSION['add'] = "<div class='error'>Failed to Add Food.</div>";
+        $_SESSION['add'] = "<div class='error'>Không thể thêm món ăn.</div>";
         header('location:' . SITEURL . 'admin/manage-food.php');
       }
     }
