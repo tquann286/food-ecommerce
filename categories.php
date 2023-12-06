@@ -1,13 +1,13 @@
 <?php include('partials-front/menu.php'); ?>
 
-<!-- CAtegories Section Starts Here -->
+<!-- Phần Danh mục Bắt đầu Tại Đây -->
 <section class="categories">
   <div class="container">
     <h2 class="text-center">Danh mục</h2>
 
     <?php
 
-    //Display all the categories that are active
+    // Hiển thị tất cả các danh mục đang hoạt động
     $sql = "SELECT * FROM tbl_category WHERE active='Có'";
 
     $res = mysqli_query($conn, $sql);
@@ -34,7 +34,6 @@
             }
             ?>
 
-
             <h3 class="float-text text-white text-shadow">
               <?php echo $title; ?>
             </h3>
@@ -44,16 +43,14 @@
         <?php
       }
     } else {
-      echo "<div class='error'>Category not found.</div>";
+      echo "<div class='error'>Không tìm thấy danh mục.</div>";
     }
 
     ?>
 
-
     <div class="clearfix"></div>
   </div>
 </section>
-<!-- Categories Section Ends Here -->
-
+<!-- Phần Danh mục Kết thúc Tại Đây -->
 
 <?php include('partials-front/footer.php'); ?>

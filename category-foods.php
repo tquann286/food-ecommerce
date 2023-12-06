@@ -1,9 +1,9 @@
 <?php include('partials-front/menu.php'); ?>
 
 <?php
-if (isset($_GET['category_id'])) {
+if(isset($_GET['category_id'])) {
   $category_id = $_GET['category_id'];
-  // Get the CAtegory Title Based on Category ID
+  // Lấy Tiêu đề Danh mục Dựa trên ID Danh mục
   $sql = "SELECT title FROM tbl_category WHERE id=$category_id";
 
   $res = mysqli_query($conn, $sql);
@@ -11,11 +11,11 @@ if (isset($_GET['category_id'])) {
   $row = mysqli_fetch_assoc($res);
   $category_title = $row['title'];
 } else {
-  header('location:' . SITEURL);
+  header('location:'.SITEURL);
 }
 ?>
 
-<!-- FOOD SEARCH -->
+<!-- TÌM KIẾM MÓN ĂN -->
 <section class="food-search text-center">
   <div class="container">
 
@@ -25,26 +25,24 @@ if (isset($_GET['category_id'])) {
 
   </div>
 </section>
-<!-- FOOD SEARCH -->
+<!-- TÌM KIẾM MÓN ĂN -->
 
-
-
-<!-- FOOD MENU -->
+<!-- MENU MÓN ĂN -->
 <section class="food-menu">
   <div class="container">
     <h2 class="text-center">Danh sách món ăn</h2>
 
     <?php
 
-    // Get foods based on Selected CAtegory
+    // Lấy món ăn dựa trên Danh mục Đã chọn
     $sql2 = "SELECT * FROM tbl_food WHERE category_id=$category_id";
 
     $res2 = mysqli_query($conn, $sql2);
 
     $count2 = mysqli_num_rows($res2);
 
-    if ($count2 > 0) {
-      while ($row2 = mysqli_fetch_assoc($res2)) {
+    if($count2 > 0) {
+      while($row2 = mysqli_fetch_assoc($res2)) {
         $id = $row2['id'];
         $title = $row2['title'];
         $price = $row2['price'];
@@ -55,7 +53,7 @@ if (isset($_GET['category_id'])) {
         <div class="food-menu-box">
           <div class="food-menu-img">
             <?php
-            if ($image_name == "") {
+            if($image_name == "") {
               include('partials-front/no-image.php');
             } else {
               ?>
@@ -79,14 +77,14 @@ if (isset($_GET['category_id'])) {
             </p>
             <br>
 
-            <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>
+            <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Đặt Ngay</a>
           </div>
         </div>
 
         <?php
       }
     } else {
-      echo "<div class='error'>Food not Available.</div>";
+      echo "<div class='error'>Món ăn không có sẵn.</div>";
     }
 
     ?>
@@ -96,6 +94,6 @@ if (isset($_GET['category_id'])) {
   </div>
 
 </section>
-<!-- FOOD MENU -->
+<!-- MENU MÓN ĂN -->
 
 <?php include('partials-front/footer.php'); ?>

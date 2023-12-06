@@ -2,7 +2,7 @@
 
 <?php
 if (isset($_GET['food_id'])) {
-  //Get the Food id and details of the selected food
+  // Lấy id và chi tiết của món ăn được chọn
   $food_id = $_GET['food_id'];
 
   $sql = "SELECT * FROM tbl_food WHERE id=$food_id";
@@ -25,7 +25,7 @@ if (isset($_GET['food_id'])) {
 }
 ?>
 
-<!-- fOOD sEARCH -->
+<!-- Phần Tìm kiếm Món ăn -->
 <section class="food-search">
   <div class="container">
 
@@ -61,7 +61,7 @@ if (isset($_GET['food_id'])) {
           </p>
           <input type="hidden" name="price" value="<?php echo $price; ?>">
 
-          <div class="order-label">Quantity</div>
+          <div class="order-label">Số lượng</div>
           <input type="number" name="qty" class="input-responsive" value="1" required>
 
         </div>
@@ -94,7 +94,7 @@ if (isset($_GET['food_id'])) {
       $price = $_POST['price'];
       $qty = $_POST['qty'];
 
-      $total = $price * $qty; // total = price x qty 
+      $total = $price * $qty; // Tổng cộng = giá x số lượng 
     
       $order_date = date("Y-m-d h:i:sa");
 
@@ -106,7 +106,7 @@ if (isset($_GET['food_id'])) {
       $customer_address = $_POST['address'];
 
 
-      //Save the Order in Databaase
+      // Lưu Đơn đặt hàng vào Cơ sở dữ liệu
       $sql2 = "INSERT INTO tbl_order SET 
                         food = '$food',
                         price = $price,
@@ -123,10 +123,10 @@ if (isset($_GET['food_id'])) {
       $res2 = mysqli_query($conn, $sql2);
 
       if ($res2 == true) {
-        $_SESSION['order'] = "<div class='success text-center'>Food Ordered Successfully.</div>";
+        $_SESSION['order'] = "<div class='success text-center'>Đặt món thành công.</div>";
         header('location:' . SITEURL);
       } else {
-        $_SESSION['order'] = "<div class='error text-center'>Failed to Order Food.</div>";
+        $_SESSION['order'] = "<div class='error text-center'>Đặt món thất bại.</div>";
         header('location:' . SITEURL);
       }
 
@@ -136,6 +136,6 @@ if (isset($_GET['food_id'])) {
 
   </div>
 </section>
-<!-- fOOD sEARCH -->
+<!-- Phần Tìm kiếm Món ăn -->
 
 <?php include('partials-front/footer.php'); ?>

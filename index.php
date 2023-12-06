@@ -142,7 +142,7 @@ if(isset($_SESSION['order'])) {
   </div>
 
   <p class="text-center">
-    <a href="#">Xem tất cả món ăn</a>
+    <a href="<?php echo SITEURL; ?>foods.php">Xem tất cả món ăn</a>
   </p>
 </section>
 <!-- Phần Danh sách Món ăn Kết thúc Tại Đây -->

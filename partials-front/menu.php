@@ -16,7 +16,7 @@
   <section class="navbar">
     <div class="container">
       <div class="logo">
-        <a href="/" title="Logo">
+        <a href="/" title="BatOn Logo">
           <img src="images/logo.png" alt="Logo Nhà hàng" class="img-responsive">
         </a>
       </div>
