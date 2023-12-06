@@ -2,7 +2,7 @@
 
 <div class="main-content">
   <div class="wrapper">
-    <h1>Update Admin</h1>
+    <h1>Cập Nhật Admin</h1>
 
     <br><br>
 
@@ -15,7 +15,7 @@
 
     if ($res == true) {
       $count = mysqli_num_rows($res);
-      //Check whether we have admin data or not
+      // Kiểm tra xem có dữ liệu admin hay không
       if ($count == 1) {
         $row = mysqli_fetch_assoc($res);
 
@@ -33,14 +33,14 @@
 
       <table class="tbl-30">
         <tr>
-          <td>Full Name: </td>
+          <td>Họ và Tên: </td>
           <td>
             <input type="text" name="full_name" value="<?php echo $full_name; ?>">
           </td>
         </tr>
 
         <tr>
-          <td>Username: </td>
+          <td>Tên Đăng Nhập: </td>
           <td>
             <input type="text" name="username" value="<?php echo $username; ?>">
           </td>
@@ -49,7 +49,7 @@
         <tr>
           <td colspan="2">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <input type="submit" name="submit" value="Update Admin" class="btn-secondary">
+            <input type="submit" name="submit" value="Cập Nhật Admin" class="btn-secondary">
           </td>
         </tr>
 
@@ -75,9 +75,9 @@ if (isset($_POST['submit'])) {
   $res = mysqli_query($conn, $sql);
 
   if ($res == true) {
-    $_SESSION['update'] = "<div class='success'>Admin Updated Successfully.</div>";
+    $_SESSION['update'] = "<div class='success'>Cập Nhật Admin Thành Công.</div>";
   } else {
-    $_SESSION['update'] = "<div class='error'>Failed to Delete Admin.</div>";
+    $_SESSION['update'] = "<div class='error'>Không Thể Cập Nhật Admin.</div>";
   }
   header('location:' . SITEURL . 'admin/manage-admin.php');
 }

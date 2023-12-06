@@ -25,7 +25,7 @@ if (isset($_GET['id'])) {
 
 <div class="main-content">
   <div class="wrapper">
-    <h1>Update Food</h1>
+    <h1>Cập Nhật Món Ăn</h1>
     <br><br>
 
     <form action="" method="POST" enctype="multipart/form-data">
@@ -33,32 +33,32 @@ if (isset($_GET['id'])) {
       <table class="tbl-30">
 
         <tr>
-          <td>Title: </td>
+          <td>Tiêu Đề: </td>
           <td>
             <input type="text" name="title" value="<?php echo $title; ?>">
           </td>
         </tr>
 
         <tr>
-          <td>Description: </td>
+          <td>Mô Tả: </td>
           <td>
             <textarea name="description" cols="30" rows="5"><?php echo $description; ?></textarea>
           </td>
         </tr>
 
         <tr>
-          <td>Price: </td>
+          <td>Giá: </td>
           <td>
             <input type="number" name="price" value="<?php echo $price; ?>">
           </td>
         </tr>
 
         <tr>
-          <td>Current Image: </td>
+          <td>Ảnh Hiện Tại: </td>
           <td>
             <?php
             if ($current_image == "") {
-              echo "<div class='error'>Image not Available.</div>";
+              echo "<div class='error'>Ảnh không khả dụng.</div>";
             } else {
               ?>
               <img src="<?php echo SITEURL; ?>images/food/<?php echo $current_image; ?>" width="150px">
@@ -69,14 +69,14 @@ if (isset($_GET['id'])) {
         </tr>
 
         <tr>
-          <td>Select New Image: </td>
+          <td>Chọn Ảnh Mới: </td>
           <td>
             <input type="file" name="image">
           </td>
         </tr>
 
         <tr>
-          <td>Category: </td>
+          <td>Danh Mục: </td>
           <td>
             <select name="category">
 
@@ -100,7 +100,7 @@ if (isset($_GET['id'])) {
                   <?php
                 }
               } else {
-                echo "<option value='0'>Category Not Available.</option>";
+                echo "<option value='0'>Danh Mục Không Khả Dụng.</option>";
               }
 
               ?>
@@ -118,7 +118,7 @@ if (isset($_GET['id'])) {
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
 
-            <input type="submit" name="submit" value="Update Food" class="btn-secondary">
+            <input type="submit" name="submit" value="Cập Nhật Món Ăn" class="btn-secondary">
           </td>
         </tr>
 
@@ -140,11 +140,11 @@ if (isset($_GET['id'])) {
       $active = $_POST['active'];
 
 
-      //CHeck whether upload button is clicked or not
+      // Kiểm tra xem nút tải lên có được nhấn hay không
       if (isset($_FILES['image']['name'])) {
         $image_name = $_FILES['image']['name'];
 
-        //CHeck whether the file is available or not
+        // Kiểm tra xem tệp có sẵn hay không
         if ($image_name != "") {
           $image_name_parts = explode('.', $image_name);
           $ext = end($image_name_parts);
@@ -158,19 +158,19 @@ if (isset($_GET['id'])) {
           $upload = move_uploaded_file($src_path, $dest_path);
 
           if ($upload == false) {
-            $_SESSION['upload'] = "<div class='error'>Failed to Upload new Image.</div>";
+            $_SESSION['upload'] = "<div class='error'>Không Thể Tải Lên Ảnh Mới.</div>";
             header('location:' . SITEURL . 'admin/manage-food.php');
             die();
           }
 
-          // Remove the image if new image is uploaded and current image exists
+          // Xóa ảnh nếu ảnh mới được tải lên và ảnh hiện tại tồn tại
           if ($current_image != "") {
             $remove_path = "../images/food/" . $current_image;
 
             $remove = unlink($remove_path);
 
             if ($remove == false) {
-              $_SESSION['remove-failed'] = "<div class='error'>Fail to remove current image.</div>";
+              $_SESSION['remove-failed'] = "<div class='error'>Không Thể Xóa Ảnh Hiện Tại.</div>";
               header('location:' . SITEURL . 'admin/manage-food.php');
               die();
             }
@@ -179,10 +179,10 @@ if (isset($_GET['id'])) {
           $image_name = $current_image;
         }
       } else {
-        $image_name = $current_image; //Default Image when Button is not Clicked
+        $image_name = $current_image; //Ảnh mặc định khi nút không được nhấn
       }
 
-      // Update the Food in Database
+      // Cập nhật Món ăn trong cơ sở dữ liệu
       $sql3 = "UPDATE tbl_food SET 
                     title = '$title',
                     description = '$description',
@@ -197,10 +197,10 @@ if (isset($_GET['id'])) {
       $res3 = mysqli_query($conn, $sql3);
 
       if ($res3 == true) {
-        $_SESSION['update'] = "<div class='success'>Food Updated Successfully.</div>";
+        $_SESSION['update'] = "<div class='success'>Cập Nhật Món Ăn Thành Công.</div>";
         header('location:' . SITEURL . 'admin/manage-food.php');
       } else {
-        $_SESSION['update'] = "<div class='error'>Failed to Update Food.</div>";
+        $_SESSION['update'] = "<div class='error'>Không Thể Cập Nhật Món Ăn.</div>";
         header('location:' . SITEURL . 'admin/manage-food.php');
       }
 

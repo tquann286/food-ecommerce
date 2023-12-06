@@ -2,16 +2,15 @@
 
 <div class="main-content">
   <div class="wrapper">
-    <h1>Update Order</h1>
+    <h1>Cập Nhật Đơn Hàng</h1>
     <br><br>
-
 
     <?php
 
     if (isset($_GET['id'])) {
       $id = $_GET['id'];
 
-      // Get other details based on this id
+      // Lấy các chi tiết khác dựa trên id này
       $sql = "SELECT * FROM tbl_order WHERE id=$id";
 
       $res = mysqli_query($conn, $sql);
@@ -42,14 +41,14 @@
 
       <table class="tbl-30">
         <tr>
-          <td>Food Name</td>
+          <td>Tên Món Ăn</td>
           <td><b>
               <?php echo $food; ?>
             </b></td>
         </tr>
 
         <tr>
-          <td>Price</td>
+          <td>Giá</td>
           <td>
             <b>
               <?php echo $price; ?>vnd
@@ -58,14 +57,14 @@
         </tr>
 
         <tr>
-          <td>Qty</td>
+          <td>Số Lượng</td>
           <td>
             <input type="number" name="qty" value="<?php echo $qty; ?>">
           </td>
         </tr>
 
         <tr>
-          <td>Status</td>
+          <td>Trạng Thái</td>
           <td>
             <select name="status">
               <option <?php if ($status == "Đã đặt hàng") {
@@ -87,39 +86,39 @@
         </tr>
 
         <tr>
-          <td>Customer Name: </td>
+          <td>Tên Khách Hàng: </td>
           <td>
             <input type="text" name="customer_name" value="<?php echo $customer_name; ?>">
           </td>
         </tr>
 
         <tr>
-          <td>Customer Contact: </td>
+          <td>Thông tin liên hệ: </td>
           <td>
             <input type="text" name="customer_contact" value="<?php echo $customer_contact; ?>">
           </td>
         </tr>
 
         <tr>
-          <td>Customer Email: </td>
+          <td>Email Khách Hàng: </td>
           <td>
             <input type="text" name="customer_email" value="<?php echo $customer_email; ?>">
           </td>
         </tr>
 
         <tr>
-          <td>Customer Address: </td>
+          <td>Địa Chỉ Khách Hàng: </td>
           <td>
             <textarea name="customer_address" cols="30" rows="5"><?php echo $customer_address; ?></textarea>
           </td>
         </tr>
 
         <tr>
-          <td clospan="2">
+          <td colspan="2">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <input type="hidden" name="price" value="<?php echo $price; ?>">
 
-            <input type="submit" name="submit" value="Update Order" class="btn-secondary">
+            <input type="submit" name="submit" value="Cập Nhật Đơn Hàng" class="btn-secondary">
           </td>
         </tr>
       </table>
@@ -155,12 +154,12 @@
 
       $res2 = mysqli_query($conn, $sql2);
 
-      //CHeck whether update or not
+      // Kiểm tra cập nhật thành công hay không
       if ($res2 == true) {
-        $_SESSION['update'] = "<div class='success'>Order Updated Successfully.</div>";
+        $_SESSION['update'] = "<div class='success'>Đơn Hàng Đã Cập Nhật Thành Công.</div>";
         header('location:' . SITEURL . 'admin/manage-order.php');
       } else {
-        $_SESSION['update'] = "<div class='error'>Failed to Update Order.</div>";
+        $_SESSION['update'] = "<div class='error'>Không Thể Cập Nhật Đơn Hàng.</div>";
         header('location:' . SITEURL . 'admin/manage-order.php');
       }
     }
