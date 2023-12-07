@@ -1,5 +1,6 @@
 <?php
 include('../config/constants.php');
+include('oop/Category.php');
 
 if (isset($_GET['id']) && isset($_GET['image_name'])) {
   $id = $_GET['id'];
@@ -19,20 +20,28 @@ if (isset($_GET['id']) && isset($_GET['image_name'])) {
     }
   }
 
-  $sql = "DELETE FROM tbl_category WHERE id=$id";
+  $category = new Category('', '', '', '');
+  $category->setId($id);
 
-  $res = mysqli_query($conn, $sql);
+  $id = $category->getId();
 
-  // Kiểm tra xem dữ liệu đã bị xóa từ cơ sở dữ liệu hay chưa
-  if ($res == true) {
+  $sqlDelete = "DELETE FROM tbl_category WHERE id=?";
+  $stmt = mysqli_prepare($conn, $sqlDelete);
+
+  mysqli_stmt_bind_param($stmt, "i", $id);
+
+  $resDelete = mysqli_stmt_execute($stmt);
+
+  if ($resDelete == true) {
     $_SESSION['delete'] = "<div class='success'>Xóa Danh Mục Thành Công.</div>";
-    header('location:' . SITEURL . 'admin/manage-category.php');
   } else {
     $_SESSION['delete'] = "<div class='error'>Không Thể Xóa Danh Mục.</div>";
-    header('location:' . SITEURL . 'admin/manage-category.php');
   }
 
+  mysqli_stmt_close($stmt);
 } else {
   header('location:' . SITEURL . 'admin/manage-category.php');
 }
+
+header('location:' . SITEURL . 'admin/manage-category.php');
 ?>

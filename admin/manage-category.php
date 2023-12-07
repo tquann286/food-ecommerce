@@ -1,4 +1,5 @@
 <?php include('partials/menu.php'); ?>
+<?php include('oop/Category.php'); ?>
 
 <div class="main-content">
     <div class="container">
@@ -69,18 +70,16 @@
 
                 if ($count > 0) {
                     while ($row = mysqli_fetch_assoc($res)) {
-                        $id = $row['id'];
-                        $title = $row['title'];
-                        $image_name = $row['image_name'];
-                        $featured = $row['featured'];
-                        $active = $row['active'];
-                ?>
+                        // Create an instance of the Category class
+                        $category = new Category($row['title'], $row['image_name'], $row['featured'], $row['active']);
+                        ?>
 
                         <tr>
                             <td><?php echo $sn++; ?>.</td>
-                            <td><?php echo $title; ?></td>
+                            <td><?php echo $category->getTitle(); ?></td>
                             <td>
                                 <?php
+                                $image_name = $category->getImageName();
                                 if ($image_name != "") {
                                     ?>
                                     <img src="<?php echo SITEURL; ?>images/category/<?php echo $image_name; ?>" width="100px" alt="<?php echo $image_name; ?>">
@@ -90,11 +89,11 @@
                                 }
                                 ?>
                             </td>
-                            <td><?php echo $featured; ?></td>
-                            <td><?php echo $active; ?></td>
+                            <td><?php echo $category->getFeatured(); ?></td>
+                            <td><?php echo $category->getActive(); ?></td>
                             <td>
-                                <a href="<?php echo SITEURL; ?>admin/update-category.php?id=<?php echo $id; ?>" class="btn btn-secondary">Cập nhật Danh mục</a>
-                                <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn btn-danger">Xóa Danh mục</a>
+                                <a href="<?php echo SITEURL; ?>admin/update-category.php?id=<?php echo $row['id']; ?>" class="btn btn-secondary">Cập nhật Danh mục</a>
+                                <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $row['id']; ?>&image_name=<?php echo $image_name; ?>" class="btn btn-danger">Xóa Danh mục</a>
                             </td>
                         </tr>
                 <?php
