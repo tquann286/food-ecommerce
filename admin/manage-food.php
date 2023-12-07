@@ -40,11 +40,11 @@
 
         <table class="tbl-full">
             <tr>
-                <th>S.N.</th>
+                <th>S.T.T</th>
                 <th>Tiêu Đề</th>
                 <th>Giá</th>
                 <th>Ảnh</th>
-                <th>Nổi Bật</th>
+                <th>Đề xuất</th>
                 <th>Kích Hoạt</th>
                 <th>Hành Động</th>
             </tr>

@@ -28,60 +28,34 @@ if (isset($_GET['id'])) {
     <h1>Cập Nhật Món Ăn</h1>
     <br><br>
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data" class="mt-3">
 
-      <table class="tbl-30">
+      <div class="form-group mb-2">
+        <label for="title">Tiêu Đề:</label>
+        <input type="text" name="title" id="title" class="form-control" value="<?php echo $title; ?>">
+      </div>
 
-        <tr>
-          <td>Tiêu Đề: </td>
-          <td>
-            <input type="text" name="title" value="<?php echo $title; ?>">
-          </td>
-        </tr>
+      <div class="form-group mb-2">
+        <label for="description">Mô Tả:</label>
+        <textarea name="description" id="description" class="form-control"
+          rows="5"><?php echo $description; ?></textarea>
+      </div>
 
-        <tr>
-          <td>Mô Tả: </td>
-          <td>
-            <textarea name="description" cols="30" rows="5"><?php echo $description; ?></textarea>
-          </td>
-        </tr>
+      <div class="form-group mb-2">
+        <label for="price">Giá:</label>
+        <input type="number" name="price" id="price" class="form-control" value="<?php echo $price; ?>">
+      </div>
 
-        <tr>
-          <td>Giá: </td>
-          <td>
-            <input type="number" name="price" value="<?php echo $price; ?>">
-          </td>
-        </tr>
+      <div class="form-group mb-2">
+        <label for="image">Chọn Ảnh Mới:</label>
+        <input type="file" name="image" id="image" class="form-control">
+      </div>
 
-        <tr>
-          <td>Ảnh Hiện Tại: </td>
-          <td>
-            <?php
-            if ($current_image == "") {
-              echo "<div class='error'>Ảnh không khả dụng.</div>";
-            } else {
-              ?>
-              <img src="<?php echo SITEURL; ?>images/food/<?php echo $current_image; ?>" width="150px">
-              <?php
-            }
-            ?>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Chọn Ảnh Mới: </td>
-          <td>
-            <input type="file" name="image">
-          </td>
-        </tr>
-
-        <tr>
-          <td>Danh Mục: </td>
-          <td>
-            <select name="category">
-
-              <?php
-              $sql = "SELECT * FROM tbl_category WHERE active='Yes'";
+      <div class="form-group mb-2">
+        <label for="category">Danh Mục:</label>
+        <select name="category" id="category" class="form-control">
+        <?php
+              $sql = "SELECT * FROM tbl_category WHERE active='Có'";
               $res = mysqli_query($conn, $sql);
               $count = mysqli_num_rows($res);
 
@@ -104,25 +78,18 @@ if (isset($_GET['id'])) {
               }
 
               ?>
+        </select>
+      </div>
 
-            </select>
-          </td>
-        </tr>
+      <?php include('forms/update-featured.php'); ?>
 
-        <?php include('forms/update-featured.php'); ?>
+      <?php include('forms/update-active.php'); ?>
 
-        <?php include('forms/update-active.php'); ?>
+      <input type="hidden" name="id" value="<?php echo $id; ?>">
+      <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
 
-        <tr>
-          <td>
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
-
-            <input type="submit" name="submit" value="Cập Nhật Món Ăn" class="btn-secondary">
-          </td>
-        </tr>
-
-      </table>
+      <br>
+      <button type="submit" name="submit" class="btn btn-primary mt-2">Cập Nhật Món Ăn</button>
 
     </form>
 

@@ -23,34 +23,30 @@
     <br><br>
 
     <!-- Bắt đầu Form Thêm Danh Mục -->
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
 
-      <table class="tbl-30">
-        <tr>
-          <td>Tiêu Đề: </td>
-          <td>
-            <input type="text" name="title" placeholder="Tiêu đề danh mục">
-          </td>
-        </tr>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="title" class="form-label">Tiêu Đề:</label>
+          <input type="text" name="title" class="form-control" id="title" placeholder="Tiêu đề danh mục" required>
+          <div class="invalid-feedback">
+            Vui lòng nhập tiêu đề.
+          </div>
+        </div>
 
-        <tr>
-          <td>Chọn Hình Ảnh: </td>
-          <td>
-            <input type="file" name="image">
-          </td>
-        </tr>
+        <div class="col-md-6">
+          <label for="image" class="form-label">Chọn Hình Ảnh:</label>
+          <input type="file" name="image" class="form-control" id="image">
+        </div>
 
         <?php include('forms/featured.php'); ?>
 
         <?php include('forms/active.php'); ?>
 
-        <tr>
-          <td colspan="2">
-            <input type="submit" name="submit" value="Thêm Danh Mục" class="btn-secondary">
-          </td>
-        </tr>
-
-      </table>
+        <div class="col-md-12">
+          <button type="submit" name="submit" class="btn btn-secondary">Thêm Danh Mục</button>
+        </div>
+      </div>
 
     </form>
     <!-- Kết Thúc Form Thêm Danh Mục -->
@@ -88,9 +84,8 @@
 
           // Đổi tên ảnh
           $image_name = "Food_Category_" . rand(0000, 9999) . '.' . $ext; // ví dụ: Food_Category_834.jpg
-    
-          $source_path = $_FILES['image']['tmp_name'];
 
+          $source_path = $_FILES['image']['tmp_name'];
           $destination_path = "../images/category/" . $image_name;
 
           // Tải ảnh lên

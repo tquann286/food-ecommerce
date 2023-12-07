@@ -1,15 +1,14 @@
 <tr>
-  <td>Featured: </td>
+  <td>Đề xuất: </td>
   <td>
-    <input id="featured-yes" <?php if ($featured == "Có") {
-      echo "checked";
-    } ?> type="radio" name="featured" value="Có">
-    <label for="featured-yes">Có</label>
+    <div class="form-check form-check-inline">
+      <input id="featured-yes" <?php if ($featured == "Có") { echo "checked"; } ?> type="radio" name="featured" value="Có" class="form-check-input">
+      <label class="form-check-label" for="featured-yes">Có</label>
+    </div>
 
-    <input id="featured-No" <?php if ($featured == "Không") {
-      echo "checked";
-    } ?> type="radio" name="featured"
-      value="Không">
-    <label for="featured-No">Không</label>
+    <div class="form-check form-check-inline">
+      <input id="featured-no" <?php if ($featured == "Không") { echo "checked"; } ?> type="radio" name="featured" value="Không" class="form-check-input">
+      <label class="form-check-label" for="featured-no">Không</label>
+    </div>
   </td>
 </tr>

@@ -1,100 +1,74 @@
 <?php include('partials/menu.php'); ?>
 
 <div class="main-content">
-  <div class="wrapper">
-    <h1>Thêm Món Ăn</h1>
-
-    <br><br>
+  <div class="container">
+    <h1 class="mb-4">Thêm Món Ăn</h1>
 
     <?php
     if (isset($_SESSION['upload'])) {
-      echo $_SESSION['upload'];
+      echo '<div class="alert alert-warning">' . $_SESSION['upload'] . '</div>';
       unset($_SESSION['upload']);
     }
     ?>
 
     <form action="" method="POST" enctype="multipart/form-data">
 
-      <table class="tbl-30">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="title" class="form-label">Tiêu Đề:</label>
+            <input type="text" class="form-control" name="title" placeholder="Tiêu đề món ăn" required>
+          </div>
 
-        <tr>
-          <td>Tiêu Đề: </td>
-          <td>
-            <input type="text" name="title" placeholder="Tiêu đề món ăn">
-          </td>
-        </tr>
+          <div class="mb-3">
+            <label for="description" class="form-label">Mô Tả:</label>
+            <textarea class="form-control" name="description" rows="5" placeholder="Mô tả món ăn" required></textarea>
+          </div>
 
-        <tr>
-          <td>Mô Tả: </td>
-          <td>
-            <textarea name="description" cols="30" rows="5" placeholder="Mô tả món ăn"></textarea>
-          </td>
-        </tr>
+          <div class="mb-3">
+            <label for="price" class="form-label">Giá:</label>
+            <input type="number" class="form-control" name="price" required>
+          </div>
 
-        <tr>
-          <td>Giá: </td>
-          <td>
-            <input type="number" name="price">
-          </td>
-        </tr>
+          <div class="mb-3">
+            <label for="image" class="form-label">Chọn Hình Ảnh:</label>
+            <input type="file" class="form-control" name="image" required>
+          </div>
+        </div>
 
-        <tr>
-          <td>Chọn Hình Ảnh: </td>
-          <td>
-            <input type="file" name="image">
-          </td>
-        </tr>
-
-        <tr>
-          <td>Danh Mục: </td>
-          <td>
-            <select name="category">
-
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="category" class="form-label">Danh Mục:</label>
+            <select class="form-select" name="category" required>
               <?php
               $sql = "SELECT * FROM tbl_category WHERE active='Có'";
-
               $res = mysqli_query($conn, $sql);
-
               $count = mysqli_num_rows($res);
 
               if ($count > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
                   $id = $row['id'];
                   $title = $row['title'];
-
-                  ?>
-
-                  <option value="<?php echo $id; ?>">
-                    <?php echo $title; ?>
-                  </option>
-
-                  <?php
+                  echo '<option value="' . $id . '">' . $title . '</option>';
                 }
               } else {
-                ?>
-                <option value="0">Không Tìm Thấy Danh Mục</option>
-                <?php
+                echo '<option value="0">Không Tìm Thấy Danh Mục</option>';
               }
               ?>
-
             </select>
-          </td>
-        </tr>
+          </div>
 
-        <?php include('forms/featured.php'); ?>
+          <?php include('forms/featured.php'); ?>
 
-        <?php include('forms/active.php'); ?>
+          <?php include('forms/active.php'); ?>
+        </div>
+      </div>
 
-        <tr>
-          <td colspan="2">
-            <input type="submit" name="submit" value="Thêm Món Ăn" class="btn-secondary">
-          </td>
-        </tr>
-
-      </table>
+      <div class="mb-3">
+        <input type="submit" name="submit" value="Thêm Món Ăn" class="btn btn-primary">
+      </div>
 
     </form>
-
 
     <?php
 
@@ -173,7 +147,9 @@
       }
     }
     ?>
+
   </div>
 </div>
 
 <?php include('partials/footer.php'); ?>
+

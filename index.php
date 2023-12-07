@@ -82,7 +82,7 @@ if(isset($_SESSION['order'])) {
 
     <?php
 
-    // Lấy Món ăn từ Cơ sở dữ liệu có trạng thái hoạt động và là nổi bật
+    // Lấy Món ăn từ Cơ sở dữ liệu có trạng thái hoạt động và được đề xuất
     $sql2 = "SELECT * FROM tbl_food WHERE active='Có' AND featured='Có' LIMIT 6";
 
     $res2 = mysqli_query($conn, $sql2);
