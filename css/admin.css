@@ -126,3 +126,16 @@ table tr td {
   width: 100px;
   height: 100px;
 }
+
+/* CSS tùy chỉnh */
+.form-check-label {
+  margin-bottom: 0; /* Giảm khoảng cách dưới của nhãn */
+}
+
+.form-check-inline {
+  margin-right: 10px; /* Tăng khoảng cách giữa các ô radio */
+}
+
+.active > .nav-link {
+  color: #fff !important;
+}
