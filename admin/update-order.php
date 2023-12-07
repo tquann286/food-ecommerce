@@ -1,4 +1,8 @@
-<?php include('partials/menu.php'); ?>
+<?php
+include('partials/menu.php');
+include('oop/Order.php');
+
+?>
 
 <div class="main-content">
   <div class="container">
@@ -10,24 +14,19 @@
     if (isset($_GET['id'])) {
       $id = $_GET['id'];
 
-      // Lấy các chi tiết khác dựa trên id này
-      $sql = "SELECT * FROM tbl_order WHERE id=$id";
+      // Create an instance of the Order class
+      $order = new Order('','','','','','','','','','','');
+      $orderDetails = $order->getOrderById($id);
 
-      $res = mysqli_query($conn, $sql);
-
-      $count = mysqli_num_rows($res);
-
-      if ($count == 1) {
-        $row = mysqli_fetch_assoc($res);
-
-        $food = $row['food'];
-        $price = $row['price'];
-        $qty = $row['qty'];
-        $status = $row['status'];
-        $customer_name = $row['customer_name'];
-        $customer_contact = $row['customer_contact'];
-        $customer_email = $row['customer_email'];
-        $customer_address = $row['customer_address'];
+      if ($orderDetails) {
+        $food = $orderDetails['food'];
+        $price = $orderDetails['price'];
+        $qty = $orderDetails['qty'];
+        $status = $orderDetails['status'];
+        $customer_name = $orderDetails['customer_name'];
+        $customer_contact = $orderDetails['customer_contact'];
+        $customer_email = $orderDetails['customer_email'];
+        $customer_address = $orderDetails['customer_address'];
       } else {
         header('location:' . SITEURL . 'admin/manage-order.php');
       }
@@ -85,17 +84,20 @@
 
           <div class="form-group">
             <label for="customer_contact">Thông tin liên hệ</label>
-            <input type="text" class="form-control" name="customer_contact" value="<?php echo $customer_contact; ?>" required>
+            <input type="text" class="form-control" name="customer_contact" value="<?php echo $customer_contact; ?>"
+              required>
           </div>
 
           <div class="form-group">
             <label for="customer_email">Email Khách Hàng</label>
-            <input type="text" class="form-control" name="customer_email" value="<?php echo $customer_email; ?>" required>
+            <input type="text" class="form-control" name="customer_email" value="<?php echo $customer_email; ?>"
+              required>
           </div>
 
           <div class="form-group">
             <label for="customer_address">Địa Chỉ Khách Hàng</label>
-            <textarea class="form-control" name="customer_address" cols="30" rows="5" required><?php echo $customer_address; ?></textarea>
+            <textarea class="form-control" name="customer_address" cols="30" rows="5"
+              required><?php echo $customer_address; ?></textarea>
           </div>
         </div>
       </div>
@@ -111,8 +113,8 @@
 
     <?php
     if (isset($_POST['submit'])) {
-      // Xử lý và cập nhật dữ liệu ở đây
-
+      // Process and update data here
+    
       $id = $_POST['id'];
       $price = $_POST['price'];
       $qty = $_POST['qty'];
@@ -126,21 +128,11 @@
       $customer_email = $_POST['customer_email'];
       $customer_address = $_POST['customer_address'];
 
-      $sql2 = "UPDATE tbl_order SET 
-                    qty = $qty,
-                    total = $total,
-                    status = '$status',
-                    customer_name = '$customer_name',
-                    customer_contact = '$customer_contact',
-                    customer_email = '$customer_email',
-                    customer_address = '$customer_address'
-                    WHERE id=$id
-                ";
+      // Update order using Order class method
+      $updateResult = $order->updateOrder($id, $qty, $total, $status, $customer_name, $customer_contact, $customer_email, $customer_address);
 
-      $res2 = mysqli_query($conn, $sql2);
-
-      // Kiểm tra cập nhật thành công hay không
-      if ($res2 == true) {
+      // Check if the update was successful
+      if ($updateResult) {
         $_SESSION['update'] = "<div class='success'>Đơn Hàng Đã Cập Nhật Thành Công.</div>";
         header('location:' . SITEURL . 'admin/manage-order.php');
       } else {
