@@ -1,4 +1,5 @@
-<?php include('partials/menu.php'); ?>
+<?php include('partials/menu.php');
+include('oop/Admin.php'); ?>
 
 <div class="main-content">
   <div class="wrapper">
@@ -8,18 +9,21 @@
     $id = $_GET['id'];
 
     $sql = "SELECT * FROM tbl_admin WHERE id=$id";
-
     $res = mysqli_query($conn, $sql);
 
-    if($res == true) {
+    if ($res == true) {
       $count = mysqli_num_rows($res);
-      if($count == 1) {
+      if ($count == 1) {
         $row = mysqli_fetch_assoc($res);
 
-        $full_name = $row['full_name'];
-        $username = $row['username'];
+        $admin = new Admin($row['full_name'], $row['username'], '');
+
+        $admin->setId($id);
+
+        $full_name = $admin->getFullName();
+        $username = $admin->getUsername();
       } else {
-        header('location:'.SITEURL.'admin/manage-admin.php');
+        header('location:' . SITEURL . 'admin/manage-admin.php');
       }
     }
     ?>
@@ -46,25 +50,28 @@
 
 <?php
 
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
   $id = $_POST['id'];
   $full_name = $_POST['full_name'];
   $username = $_POST['username'];
 
+  $admin = new Admin($full_name, $username, '');
+  $admin->setId($id);
+
   $sql = "UPDATE tbl_admin SET
-        full_name = '$full_name',
-        username = '$username' 
-        WHERE id='$id'
+        full_name = '{$admin->getFullName()}',
+        username = '{$admin->getUsername()}'
+        WHERE id={$admin->getId()}
         ";
 
   $res = mysqli_query($conn, $sql);
 
-  if($res == true) {
+  if ($res == true) {
     $_SESSION['update'] = "<div class=''>Cập Nhật Admin Thành Công.</div>";
   } else {
     $_SESSION['update'] = "<div class=''>Không Thể Cập Nhật Admin.</div>";
   }
-  header('location:'.SITEURL.'admin/manage-admin.php');
+  header('location:' . SITEURL . 'admin/manage-admin.php');
 }
 
 ?>

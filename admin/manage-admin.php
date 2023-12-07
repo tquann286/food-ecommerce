@@ -1,4 +1,8 @@
-<?php include('partials/menu.php'); ?>
+<?php
+include('partials/menu.php');
+include('oop/Admin.php');
+
+?>
 
 <!-- Phần Nội dung chính Bắt đầu -->
 <div class="main-content">
@@ -7,23 +11,23 @@
 
         <?php
         // Hiển thị Thông báo từ Session
-        if(isset($_SESSION['add'])) {
-            echo '<div class="alert alert-success">'.$_SESSION['add'].'</div>';
+        if (isset($_SESSION['add'])) {
+            echo '<div class="alert alert-success">' . $_SESSION['add'] . '</div>';
             unset($_SESSION['add']);
         }
 
-        if(isset($_SESSION['delete'])) {
-            echo '<div class="alert alert-danger">'.$_SESSION['delete'].'</div>';
+        if (isset($_SESSION['delete'])) {
+            echo '<div class="alert alert-danger">' . $_SESSION['delete'] . '</div>';
             unset($_SESSION['delete']);
         }
 
-        if(isset($_SESSION['update'])) {
-            echo '<div class="alert alert-info">'.$_SESSION['update'].'</div>';
+        if (isset($_SESSION['update'])) {
+            echo '<div class="alert alert-info">' . $_SESSION['update'] . '</div>';
             unset($_SESSION['update']);
         }
 
-        if(isset($_SESSION['change-pwd'])) {
-            echo '<div class="alert alert-warning">'.$_SESSION['change-pwd'].'</div>';
+        if (isset($_SESSION['change-pwd'])) {
+            echo '<div class="alert alert-warning">' . $_SESSION['change-pwd'] . '</div>';
             unset($_SESSION['change-pwd']);
         }
         ?>
@@ -45,15 +49,13 @@
                 $sql = "SELECT * FROM tbl_admin";
                 $res = mysqli_query($conn, $sql);
 
-                if($res == TRUE) {
+                if ($res == TRUE) {
                     $count = mysqli_num_rows($res);
                     $sn = 1;
 
-                    if($count > 0) {
-                        while($rows = mysqli_fetch_assoc($res)) {
-                            $id = $rows['id'];
-                            $full_name = $rows['full_name'];
-                            $username = $rows['username'];
+                    if ($count > 0) {
+                        while ($rows = mysqli_fetch_assoc($res)) {
+                            $admin = new Admin($rows['full_name'], $rows['username'], '');
                             ?>
 
                             <tr>
@@ -61,17 +63,18 @@
                                     <?php echo $sn++; ?>.
                                 </td>
                                 <td>
-                                    <?php echo $full_name; ?>
+                                    <?php echo $admin->getFullName(); ?>
                                 </td>
                                 <td>
-                                    <?php echo $username; ?>
+                                    <?php echo $admin->getUsername(); ?>
                                 </td>
                                 <td>
-                                    <a href="<?php echo SITEURL; ?>admin/update-password.php?id=<?php echo $id; ?>"
+                                    <!-- You can perform additional actions or display more information here -->
+                                    <a href="<?php echo SITEURL; ?>admin/update-password.php?id=<?php echo $rows['id']; ?>"
                                         class="btn btn-primary">Đổi Mật khẩu</a>
-                                    <a href="<?php echo SITEURL; ?>admin/update-admin.php?id=<?php echo $id; ?>"
+                                    <a href="<?php echo SITEURL; ?>admin/update-admin.php?id=<?php echo $rows['id']; ?>"
                                         class="btn btn-secondary">Cập nhật Admin</a>
-                                    <a href="<?php echo SITEURL; ?>admin/delete-admin.php?id=<?php echo $id; ?>"
+                                    <a href="<?php echo SITEURL; ?>admin/delete-admin.php?id=<?php echo $rows['id']; ?>"
                                         class="btn btn-danger">Xóa Admin</a>
                                 </td>
                             </tr>
@@ -80,6 +83,7 @@
                         }
                     } else {
                         // Nếu không có dữ liệu trong cơ sở dữ liệu
+                        echo '<tr><td colspan="4">Không có dữ liệu</td></tr>';
                     }
                 }
                 ?>
