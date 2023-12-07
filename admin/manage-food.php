@@ -1,4 +1,5 @@
-<?php include('partials/menu.php'); ?>
+<?php include('partials/menu.php');
+include('oop/Food.php'); ?>
 
 <div class="main-content">
     <div class="wrapper">
@@ -11,30 +12,9 @@
         <br /><br /><br />
 
         <?php
-        if (isset($_SESSION['add'])) {
-            echo $_SESSION['add'];
-            unset($_SESSION['add']);
-        }
-
-        if (isset($_SESSION['delete'])) {
-            echo $_SESSION['delete'];
-            unset($_SESSION['delete']);
-        }
-
-        if (isset($_SESSION['upload'])) {
-            echo $_SESSION['upload'];
-            unset($_SESSION['upload']);
-        }
-
-        if (isset($_SESSION['unauthorize'])) {
-            echo $_SESSION['unauthorize'];
-            unset($_SESSION['unauthorize']);
-        }
-
-        if (isset($_SESSION['update'])) {
-            echo $_SESSION['update'];
-            unset($_SESSION['update']);
-        }
+        // Display messages
+        $food = new Food('', '', '', '', '', '', '');
+        $food->displayMessages();
 
         ?>
 
@@ -50,55 +30,44 @@
             </tr>
 
             <?php
-            $sql = "SELECT * FROM tbl_food";
+            // Fetch and display food items
+            $foodList = $food->getAllFood($conn);
 
-            $res = mysqli_query($conn, $sql);
-
-            $count = mysqli_num_rows($res);
-
-            $sn = 1;
-
-            if ($count > 0) {
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $id = $row['id'];
-                    $title = $row['title'];
-                    $price = $row['price'];
-                    $image_name = $row['image_name'];
-                    $featured = $row['featured'];
-                    $active = $row['active'];
+            if ($foodList) {
+                foreach ($foodList as $key => $value) {
                     ?>
 
                     <tr>
                         <td>
-                            <?php echo $sn++; ?>.
+                            <?php echo $key + 1; ?>.
                         </td>
                         <td>
-                            <?php echo $title; ?>
+                            <?php echo $value['title']; ?>
                         </td>
                         <td>
-                            <?php echo $price; ?>vnd
+                            <?php echo $value['price']; ?>vnd
                         </td>
                         <td>
                             <?php
-                            if ($image_name == "") {
+                            if (empty($value['image_name'])) {
                                 include('partials/no-image.php');
                             } else {
                                 ?>
-                                <img src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>" width="100px">
+                                <img src="<?php echo SITEURL; ?>images/food/<?php echo $value['image_name']; ?>" width="100px">
                                 <?php
                             }
                             ?>
                         </td>
                         <td>
-                            <?php echo $featured; ?>
+                            <?php echo $value['featured']; ?>
                         </td>
                         <td>
-                            <?php echo $active; ?>
+                            <?php echo $value['active']; ?>
                         </td>
                         <td>
-                            <a href="<?php echo SITEURL; ?>admin/update-food.php?id=<?php echo $id; ?>"
+                            <a href="<?php echo SITEURL; ?>admin/update-food.php?id=<?php echo $value['id']; ?>"
                                 class="btn-secondary">Cập Nhật Món Ăn</a>
-                            <a href="<?php echo SITEURL; ?>admin/delete-food.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>"
+                            <a href="<?php echo SITEURL; ?>admin/delete-food.php?id=<?php echo $value['id']; ?>&image_name=<?php echo $value['image_name']; ?>"
                                 class="btn-danger">Xóa Món Ăn</a>
                         </td>
                     </tr>
@@ -106,7 +75,7 @@
                     <?php
                 }
             } else {
-                // Không có món ăn trong Cơ sở dữ liệu
+                // No food items in the database
                 echo "<tr> <td colspan='7' class='error'> Chưa Thêm Món Ăn. </td> </tr>";
             }
 
