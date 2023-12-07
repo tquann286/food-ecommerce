@@ -1,7 +1,7 @@
 <?php include('partials/menu.php'); ?>
 
 <div class="main-content">
-  <div class="wrapper">
+  <div class="container">
     <h1>Cập Nhật Đơn Hàng</h1>
     <br><br>
 
@@ -39,34 +39,26 @@
 
     <form action="" method="POST">
 
-      <table class="tbl-30">
-        <tr>
-          <td>Tên Món Ăn</td>
-          <td><b>
-              <?php echo $food; ?>
-            </b></td>
-        </tr>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="food">Tên Món Ăn</label>
+            <input type="text" class="form-control" value="<?php echo $food; ?>" disabled>
+          </div>
 
-        <tr>
-          <td>Giá</td>
-          <td>
-            <b>
-              <?php echo $price; ?>vnd
-            </b>
-          </td>
-        </tr>
+          <div class="form-group">
+            <label for="price">Giá</label>
+            <input type="text" class="form-control" value="<?php echo $price; ?>vnd" disabled>
+          </div>
 
-        <tr>
-          <td>Số Lượng</td>
-          <td>
-            <input type="number" name="qty" value="<?php echo $qty; ?>">
-          </td>
-        </tr>
+          <div class="form-group">
+            <label for="qty">Số Lượng</label>
+            <input type="number" class="form-control" name="qty" value="<?php echo $qty; ?>" required>
+          </div>
 
-        <tr>
-          <td>Trạng Thái</td>
-          <td>
-            <select name="status">
+          <div class="form-group">
+            <label for="status">Trạng Thái</label>
+            <select class="form-control" name="status">
               <option <?php if ($status == "Đã đặt hàng") {
                 echo "selected";
               } ?> value="Đã đặt hàng">Đã đặt hàng</option>
@@ -82,52 +74,45 @@
                 echo "selected";
               } ?> value="Đã huỷ">Đã huỷ</option>
             </select>
-          </td>
-        </tr>
+          </div>
+        </div>
 
-        <tr>
-          <td>Tên Khách Hàng: </td>
-          <td>
-            <input type="text" name="customer_name" value="<?php echo $customer_name; ?>">
-          </td>
-        </tr>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="customer_name">Tên Khách Hàng</label>
+            <input type="text" class="form-control" name="customer_name" value="<?php echo $customer_name; ?>" required>
+          </div>
 
-        <tr>
-          <td>Thông tin liên hệ: </td>
-          <td>
-            <input type="text" name="customer_contact" value="<?php echo $customer_contact; ?>">
-          </td>
-        </tr>
+          <div class="form-group">
+            <label for="customer_contact">Thông tin liên hệ</label>
+            <input type="text" class="form-control" name="customer_contact" value="<?php echo $customer_contact; ?>" required>
+          </div>
 
-        <tr>
-          <td>Email Khách Hàng: </td>
-          <td>
-            <input type="text" name="customer_email" value="<?php echo $customer_email; ?>">
-          </td>
-        </tr>
+          <div class="form-group">
+            <label for="customer_email">Email Khách Hàng</label>
+            <input type="text" class="form-control" name="customer_email" value="<?php echo $customer_email; ?>" required>
+          </div>
 
-        <tr>
-          <td>Địa Chỉ Khách Hàng: </td>
-          <td>
-            <textarea name="customer_address" cols="30" rows="5"><?php echo $customer_address; ?></textarea>
-          </td>
-        </tr>
+          <div class="form-group">
+            <label for="customer_address">Địa Chỉ Khách Hàng</label>
+            <textarea class="form-control" name="customer_address" cols="30" rows="5" required><?php echo $customer_address; ?></textarea>
+          </div>
+        </div>
+      </div>
 
-        <tr>
-          <td colspan="2">
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <input type="hidden" name="price" value="<?php echo $price; ?>">
+      <input type="hidden" name="id" value="<?php echo $id; ?>">
+      <input type="hidden" name="price" value="<?php echo $price; ?>">
 
-            <input type="submit" name="submit" value="Cập Nhật Đơn Hàng" class="btn-secondary">
-          </td>
-        </tr>
-      </table>
+      <div class="form-group">
+        <input type="submit" name="submit" value="Cập Nhật Đơn Hàng" class="btn btn-primary">
+      </div>
 
     </form>
 
-
     <?php
     if (isset($_POST['submit'])) {
+      // Xử lý và cập nhật dữ liệu ở đây
+
       $id = $_POST['id'];
       $price = $_POST['price'];
       $qty = $_POST['qty'];
@@ -164,7 +149,6 @@
       }
     }
     ?>
-
 
   </div>
 </div>

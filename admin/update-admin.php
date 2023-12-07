@@ -2,9 +2,7 @@
 
 <div class="main-content">
   <div class="wrapper">
-    <h1>Cập Nhật Admin</h1>
-
-    <br><br>
+    <h1 class="mb-4">Cập Nhật Admin</h1>
 
     <?php
     $id = $_GET['id'];
@@ -13,47 +11,34 @@
 
     $res = mysqli_query($conn, $sql);
 
-    if ($res == true) {
+    if($res == true) {
       $count = mysqli_num_rows($res);
-      // Kiểm tra xem có dữ liệu admin hay không
-      if ($count == 1) {
+      if($count == 1) {
         $row = mysqli_fetch_assoc($res);
 
         $full_name = $row['full_name'];
         $username = $row['username'];
       } else {
-        header('location:' . SITEURL . 'admin/manage-admin.php');
+        header('location:'.SITEURL.'admin/manage-admin.php');
       }
     }
-
     ?>
-
 
     <form action="" method="POST">
 
-      <table class="tbl-30">
-        <tr>
-          <td>Họ và Tên: </td>
-          <td>
-            <input type="text" name="full_name" value="<?php echo $full_name; ?>">
-          </td>
-        </tr>
+      <div class="mb-3">
+        <label for="full_name" class="form-label">Họ và Tên:</label>
+        <input type="text" name="full_name" value="<?php echo $full_name; ?>" class="form-control">
+      </div>
 
-        <tr>
-          <td>Tên Đăng Nhập: </td>
-          <td>
-            <input type="text" name="username" value="<?php echo $username; ?>">
-          </td>
-        </tr>
+      <div class="mb-3">
+        <label for="username" class="form-label">Tên Đăng Nhập:</label>
+        <input type="text" name="username" value="<?php echo $username; ?>" class="form-control">
+      </div>
 
-        <tr>
-          <td colspan="2">
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <input type="submit" name="submit" value="Cập Nhật Admin" class="btn-secondary">
-          </td>
-        </tr>
+      <input type="hidden" name="id" value="<?php echo $id; ?>">
 
-      </table>
+      <button type="submit" name="submit" class="btn btn-primary">Cập Nhật Admin</button>
 
     </form>
   </div>
@@ -61,7 +46,7 @@
 
 <?php
 
-if (isset($_POST['submit'])) {
+if(isset($_POST['submit'])) {
   $id = $_POST['id'];
   $full_name = $_POST['full_name'];
   $username = $_POST['username'];
@@ -74,12 +59,12 @@ if (isset($_POST['submit'])) {
 
   $res = mysqli_query($conn, $sql);
 
-  if ($res == true) {
-    $_SESSION['update'] = "<div class='success'>Cập Nhật Admin Thành Công.</div>";
+  if($res == true) {
+    $_SESSION['update'] = "<div class=''>Cập Nhật Admin Thành Công.</div>";
   } else {
-    $_SESSION['update'] = "<div class='error'>Không Thể Cập Nhật Admin.</div>";
+    $_SESSION['update'] = "<div class=''>Không Thể Cập Nhật Admin.</div>";
   }
-  header('location:' . SITEURL . 'admin/manage-admin.php');
+  header('location:'.SITEURL.'admin/manage-admin.php');
 }
 
 ?>
