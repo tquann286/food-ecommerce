@@ -25,36 +25,32 @@
 
     <form action="" method="POST">
 
-      <table class="tbl-30">
-        <tr>
-          <td>Mật Khẩu Hiện Tại: </td>
-          <td>
-            <input type="password" name="current_password" placeholder="Mật Khẩu Hiện Tại">
-          </td>
-        </tr>
+      <div class="form-group">
+        <label for="current_password">Mật Khẩu Hiện Tại:</label>
+        <input type="password" name="current_password" id="current_password" class="form-control"
+          placeholder="Mật Khẩu Hiện Tại">
+      </div>
 
-        <tr>
-          <td>Mật Khẩu Mới:</td>
-          <td>
-            <input type="password" name="new_password" placeholder="Mật Khẩu Mới">
-          </td>
-        </tr>
+      <div class="form-group">
+        <label for="new_password">Mật Khẩu Mới:</label>
+        <input type="password" name="new_password" id="new_password" class="form-control" placeholder="Mật Khẩu Mới">
+      </div>
 
-        <tr>
-          <td>Xác Nhận Mật Khẩu: </td>
-          <td>
-            <input type="password" name="confirm_password" placeholder="Xác Nhận Mật Khẩu">
-          </td>
-        </tr>
+      <div class="form-group">
+        <label for="confirm_password">Xác Nhận Mật Khẩu:</label>
+        <input type="password" name="confirm_password" id="confirm_password" class="form-control"
+          placeholder="Xác Nhận Mật Khẩu">
+      </div>
 
-        <tr>
-          <td colspan="2">
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <input type="submit" name="submit" value="Thay Đổi Mật Khẩu" class="btn-secondary">
-          </td>
-        </tr>
+      <input type="hidden" name="id" value="<?php echo $id; ?>">
+      <input type="hidden" name="id" value="<?php echo $id; ?>">
+      <input type="submit" name="submit" value="Thay Đổi Mật Khẩu" class="btn-secondary mt-4">
+      </td>
+      </tr>
+      <input type="hidden" name="id" value="<?php echo $id; ?>">
+      </td>
+      </tr>
 
-      </table>
 
     </form>
 
