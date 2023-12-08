@@ -1,6 +1,12 @@
 <?php
 include('../config/constants.php');
 include('login-check.php');
+ob_start();
+function isCurrentPage($pageName)
+{
+    $currentPage = basename($_SERVER['PHP_SELF']);
+    return ($currentPage === $pageName) ? 'active' : '';
+}
 ?>
 
 <html>
@@ -14,17 +20,28 @@ include('login-check.php');
 </head>
 
 <body>
-    <!-- Menu Section Starts -->
-    <div class="menu text-center">
-        <div class="wrapper">
-            <ul>
-                <li><a href="/admin/index.php">Trang chủ</a></li>
-                <li><a href="/admin/manage-admin.php">Admin</a></li>
-                <li><a href="/admin/manage-category.php">Danh mục</a></li>
-                <li><a href="/admin/manage-food.php">Món ăn</a></li>
-                <li><a href="/admin/manage-order.php">Đơn hàng</a></li>
-                <li><a href="/admin/logout.php">Đăng xuất</a></li>
-            </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/admin/index.php">Trang chủ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item <?php echo isCurrentPage('index.php'); ?>"><a class="nav-link"
+                            href="/admin/index.php">Trang chủ</a></li>
+                    <li class="nav-item <?php echo isCurrentPage('manage-admin.php'); ?>"><a class="nav-link"
+                            href="/admin/manage-admin.php">Admin</a></li>
+                    <li class="nav-item <?php echo isCurrentPage('manage-category.php'); ?>"><a class="nav-link"
+                            href="/admin/manage-category.php">Danh mục</a></li>
+                    <li class="nav-item <?php echo isCurrentPage('manage-food.php'); ?>"><a class="nav-link"
+                            href="/admin/manage-food.php">Món ăn</a></li>
+                    <li class="nav-item <?php echo isCurrentPage('manage-order.php'); ?>"><a class="nav-link"
+                            href="/admin/manage-order.php">Đơn hàng</a></li>
+                    <li class="nav-item <?php echo isCurrentPage('logout.php'); ?>"><a class="nav-link"
+                            href="/admin/logout.php">Đăng xuất</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <!-- Menu Section Ends -->
+    </nav>
