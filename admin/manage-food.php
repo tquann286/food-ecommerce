@@ -12,13 +12,12 @@ include('oop/Food.php'); ?>
         <br /><br /><br />
 
         <?php
-        // Display messages
         $food = new Food('', '', '', '', '', '', '');
         $food->displayMessages();
 
         ?>
 
-        <table class="tbl-full">
+        <table class="table table-bordered">
             <tr>
                 <th>S.T.T</th>
                 <th>Tiêu Đề</th>
@@ -30,7 +29,6 @@ include('oop/Food.php'); ?>
             </tr>
 
             <?php
-            // Fetch and display food items
             $foodList = $food->getAllFood($conn);
 
             if ($foodList) {
@@ -66,16 +64,16 @@ include('oop/Food.php'); ?>
                         </td>
                         <td>
                             <a href="<?php echo SITEURL; ?>admin/update-food.php?id=<?php echo $value['id']; ?>"
-                                class="btn-secondary">Cập Nhật Món Ăn</a>
+                                class="btn btn-secondary">Cập Nhật Món Ăn</a>
                             <a href="<?php echo SITEURL; ?>admin/delete-food.php?id=<?php echo $value['id']; ?>&image_name=<?php echo $value['image_name']; ?>"
-                                class="btn-danger">Xóa Món Ăn</a>
+                                class="btn btn-danger">Xóa Món Ăn</a>
                         </td>
                     </tr>
 
                     <?php
                 }
             } else {
-                // No food items in the database
+                // Không có món ăn trong Cơ sở dữ liệu
                 echo "<tr> <td colspan='7' class='error'> Chưa Thêm Món Ăn. </td> </tr>";
             }
 
