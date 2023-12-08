@@ -44,7 +44,7 @@ CREATE TABLE `tbl_admin` (
 INSERT INTO `tbl_admin` (`id`, `full_name`, `username`, `password`) VALUES
 (1, 'Đào Trung Quân', 'trungquan', 'f3ed11bbdb94fd9ebdefbaf646ab94d3'),
 (9, 'Huỳnh Phương Thanh Phát ', 'thanhphat', 'f3ed11bbdb94fd9ebdefbaf646ab94d3'),
-(10, 'Trương Nhật Huy', 'nhathuy', 'f3ed11bbdb94fd9ebdefbaf646ab94d3'),
+(10, 'Trương Nhựt Huy', 'nhuthuy', 'f3ed11bbdb94fd9ebdefbaf646ab94d3'),
 (12, 'Nguyễn Hoàng Phước', 'hoangphuoc', '21232f297a57a5a743894a0e4a801fc3'),
 (13, 'A', 'sojemulap@mailinator.com', '7aa3262b9526ff30025c2f389263399e');
 
