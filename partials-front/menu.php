@@ -17,7 +17,7 @@
     <div class="container">
       <div class="logo">
         <a href="/" title="BatOn Logo">
-          <img src="images/logo.jpg" alt="Logo Nhà hàng" class="img-responsive">
+          <img src="images/logo.jpg" alt="Logo Nhà hàng" class="img-responsive img-logo">
         </a>
       </div>
 

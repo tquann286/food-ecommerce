@@ -5,7 +5,7 @@
   <div class="container">
 
     <form action="<?php echo SITEURL; ?>food-search.php" method="POST">
-      <input type="search" name="search" placeholder="Tìm kiếm món ăn.." required>
+      <input type="search" name="search" placeholder="Tìm kiếm món ăn..." required>
       <input type="submit" name="submit" value="Tìm kiếm" class="btn btn-primary">
     </form>
 

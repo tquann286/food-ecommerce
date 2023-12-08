@@ -10,7 +10,11 @@
 }
 .img-responsive {
     width: 100%;
-    aspect-ratio: 20 / 9;
+    aspect-ratio: 16 / 9;
+}
+.img-logo {
+  width: 100%;
+  aspect-ratio: 20 / 9;
 }
 .img-curve {
     border-radius: 15px;
@@ -102,7 +106,7 @@ fieldset {
 /* CSS for Food SEarch Section */
 
 .food-search {
-    background-image: url(../images/bg.jpg);
+    background-image: url(../images/bg1.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

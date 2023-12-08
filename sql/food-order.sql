@@ -1,19 +1,19 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2020 at 07:22 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Dec 08, 2023 at 11:18 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+
 CREATE DATABASE `food-order` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `food-order`;
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -35,7 +35,7 @@ CREATE TABLE `tbl_admin` (
   `full_name` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_admin`
@@ -60,7 +60,21 @@ CREATE TABLE `tbl_category` (
   `image_name` varchar(255) NOT NULL,
   `featured` varchar(10) NOT NULL,
   `active` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `tbl_category`
+--
+
+INSERT INTO `tbl_category` (`id`, `title`, `image_name`, `featured`, `active`) VALUES
+(9, 'Cơm', 'Food_Category_4058.avif', 'Có', 'Có'),
+(10, 'Bánh mì', 'banhmi.jpg', 'Không', 'Có'),
+(11, 'Thức uống', 'thucuong.avif', 'Có', 'Có'),
+(12, 'Tráng miệng', 'dessert.jpg', 'Có', 'Có'),
+(13, 'Món nước', 'pho.jpg', 'Không', 'Không'),
+(14, 'Món gà', 'chicken.jpg', 'Không', 'Có');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `tbl_food`
@@ -75,20 +89,26 @@ CREATE TABLE `tbl_food` (
   `category_id` int(10) UNSIGNED NOT NULL,
   `featured` varchar(10) NOT NULL,
   `active` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_food`
 --
 
--- INSERT INTO `tbl_food` (`id`, `title`, `description`, `price`, `image_name`, `category_id`, `featured`, `active`) VALUES
--- (3, 'Phở', 'Phở là một món ăn truyền thống của Việt Nam', '30000', 'Food-Name-3649.jpg', 6, 'Có', 'Có'),
--- (4, 'Bánh Mì Ngon', 'Bánh mì với giò lụa, pate và nhiều phô mai.', '25000', 'Food-Name-6340.jpg', 5, 'Có', 'Có'),
--- (5, 'Bánh Xèo', 'Bánh xèo chiên giòn, ăn kèm với rau sống.', '35000', 'Food-Name-8298.jpg', 4, 'Không', 'Có'),
--- (6, 'Bún Riêu Cua', 'Bún riêu cua thơm ngon với nước dùng đậm đà.', '40000', 'Food-Name-7387.jpg', 6, 'Có', 'Có'),
--- (7, 'Bánh Tráng Trộn', 'Bánh tráng trộn cay nồng với nhiều loại gia vị.', '20000', 'Food-Name-7833.jpg', 4, 'Có', 'Có'),
--- (8, 'Cơm Niêu', 'Cơm niêu thơm ngon với các loại thịt và rau sống.', '52000', '', 5, 'Không', 'Không');
-
+INSERT INTO `tbl_food` (`id`, `title`, `description`, `price`, `image_name`, `category_id`, `featured`, `active`) VALUES
+(9, 'Cơm tấm', 'Cơm sườn, bì, chả, ốp la', 50000, 'Food-Name-1363.jpg', 9, 'Có', 'Có'),
+(10, 'Cơm gà xối mỡ', 'Cơm rang, gà ta xối mỡ', 35000, 'Food-Name-5977.jpeg', 9, 'Có', 'Có'),
+(11, 'Cơm bò lúc lắc', 'Cơm chiên, bò xào và salad', 55000, 'Food-Name-8949.jpg', 9, 'Không', 'Có'),
+(14, 'Bánh mì xíu mại', 'Bánh mì giòn, xíu mại thịt viên', 25000, 'Food-Name-9854.jpg', 10, 'Không', 'Có'),
+(15, 'Bánh mì Sài Gòn', 'Bánh mì thịt nguội, thêm bơ và pate gan', 20000, 'Food-Name-1493.jpg', 10, 'Không', 'Có'),
+(17, 'Đen đá', 'Cà phê đen đá', 20000, 'Food-Name-4429.jpg', 11, 'Không', 'Có'),
+(18, 'Nâu đá', 'Cà phê sữa đá', 25000, 'Food-Name-2035.jpg', 11, 'Không', 'Có'),
+(19, 'Trà sữa', 'Trà sữa trân châu', 18000, 'Food-Name-1773.jpg', 11, 'Không', 'Có'),
+(20, 'Bánh flan', 'Bánh flan lạnh', 10000, 'Food-Name-9560.jpg', 12, 'Không', 'Có'),
+(21, 'Kem', 'Kem ốc quế tự chọn', 22000, 'Food-Name-5691.jpg', 12, 'Không', 'Có'),
+(22, 'Xôi xoài', 'Xôi xoài chín và nước cốt dừa', 25000, 'Food-Name-9434.jpg', 12, 'Có', 'Có'),
+(23, 'Gà giòn', 'Gà chiên bột', 30000, 'Food-Name-6503.jpg', 14, 'Không', 'Có'),
+(24, 'Gà xào chua ngọt', 'Cánh gà xào với sốt chua ngọt', 35000, 'Food-Name-34.jpeg', 14, 'Có', 'Có');
 
 -- --------------------------------------------------------
 
@@ -108,19 +128,18 @@ CREATE TABLE `tbl_order` (
   `customer_contact` varchar(20) NOT NULL,
   `customer_email` varchar(150) NOT NULL,
   `customer_address` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_order`
 --
 
 INSERT INTO `tbl_order` (`id`, `food`, `price`, `qty`, `total`, `order_date`, `status`, `customer_name`, `customer_contact`, `customer_email`, `customer_address`) VALUES
-
-(1, 'Bún Riêu Cua', '40000', 3, '120000', '2023-02-15 03:49:48', 'Đã huỷ', 'Nguyễn Thị An', '+84 912 345 678', 'nguyenthi.an@mailinator.com', '123 Đường ABC, Quận 1, TP.Hồ Chí Minh'),
-
-(2, 'Bánh Mì Ngon', '25000', 4, '100000', '2023-04-20 03:52:43', 'Đã giao hàng', 'Trần Văn Bình', '+84 987 654 321', 'tranvanbinh@mailinator.com', '456 Đường XYZ, Quận 3, TP.Hồ Chí Minh'),
-
-(3, 'Bánh Tráng Trộn', '20000', 2, '40000', '2023-08-10 04:07:17', 'Đã giao hàng', 'Lê Thị Mai', '+84 933 222 111', 'lethimai@mailinator.com', '789 Đường KLM, Quận 5, TP.Hồ Chí Minh');
+(4, 'Cơm tấm', 50000, 1, 50000, '2023-12-08 11:12:55', 'Đang giao hàng', 'Phát Huỳnh', '0932654804', 'thanhphat02122003@gmail.com', 'Phú Phoàng Anh block A, Nhà Bè, Sài Gòn'),
+(5, 'Nâu đá', 25000, 1, 25000, '2023-12-08 11:13:58', 'Đã huỷ', 'Nhựt Huy', '0923556443', 'huytruong@gmail.com', '22 Lê Hoàn, Long An, Bình Chánh'),
+(6, 'Bánh flan', 10000, 5, 50000, '2023-12-08 11:14:56', 'Đã giao hàng', 'Bùi Minh Tân', '0932666712', 'tanpun11@gmail.com', '30 Nguyễn Tri Phương, Bến Tre'),
+(7, 'Bánh mì xíu mại', 25000, 2, 50000, '2023-12-08 11:15:57', 'Đang giao hàng', 'Hoàng Phước', '0911223256', 'phuongnguyen2103@gmail.com', '66 Mai Chí Thọ, Bù Đăng, Bình Phước'),
+(8, 'Gà xào chua ngọt', 35000, 3, 105000, '2023-12-08 11:16:53', 'Đã đặt hàng', 'Đào Trung Quân', '0911228669', 'quantrung286@gmail.com', '88 Mai Chi Phương, Quy Nhơn');
 
 --
 -- Indexes for dumped tables
@@ -158,25 +177,25 @@ ALTER TABLE `tbl_order`
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`
 --
 ALTER TABLE `tbl_category`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_food`
 --
 ALTER TABLE `tbl_food`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
