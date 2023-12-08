@@ -22,7 +22,6 @@ class Food
     $this->active = $active;
   }
 
-  // Getter methods
   public function getId(): int
   {
     return $this->id;
@@ -63,7 +62,6 @@ class Food
     return $this->active;
   }
 
-  // Setter methods
   public function setId($id)
   {
     $this->id = $id;
@@ -74,7 +72,6 @@ class Food
     $this->image_name = $image_name;
   }
 
-  // Method to upload an image
   public function uploadImage($input_name)
   {
     $image_name = $_FILES[$input_name]['name'];
@@ -208,8 +205,8 @@ class Food
 
       $featured = isset($_POST['featured']) ? $_POST['featured'] : "Không";
       $active = isset($_POST['active']) ? $_POST['active'] : "Không";
+      $image_name = $current_image;
 
-      // Check if a new image is uploaded
       if (isset($_FILES['image']['name'])) {
         $new_image_name = $_FILES['image']['name'];
 
@@ -230,7 +227,6 @@ class Food
             die();
           }
 
-          // Remove the current image
           if ($current_image != "") {
             $remove_path = "../images/food/" . $current_image;
             $remove = unlink($remove_path);
@@ -243,11 +239,9 @@ class Food
           }
         }
       } else {
-        // If no new image is uploaded, use the current image
         $image_name = $current_image;
       }
 
-      // Update food in the database
       $sql = "UPDATE tbl_food SET 
                     title = '$title',
                     description = '$description',

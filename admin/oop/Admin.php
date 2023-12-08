@@ -14,7 +14,6 @@ class Admin
     $this->password = md5($password);
   }
 
-  // Getter methods
   public function getId()
   {
     return $this->id;
@@ -35,7 +34,6 @@ class Admin
     return $this->password;
   }
 
-  // Setter methods
   public function setId($id)
   {
     $this->id = $id;
