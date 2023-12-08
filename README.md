@@ -1,3 +1,3 @@
 # food-ecommerce
 
-This project is for educational purposes only
+Đồ án này chỉ nhằm mục đích học tập
