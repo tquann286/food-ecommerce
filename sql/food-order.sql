@@ -116,11 +116,11 @@ CREATE TABLE `tbl_order` (
 
 INSERT INTO `tbl_order` (`id`, `food`, `price`, `qty`, `total`, `order_date`, `status`, `customer_name`, `customer_contact`, `customer_email`, `customer_address`) VALUES
 
-(1, 'Bún Riêu Cua', '40000', 3, '120000', '2023-02-15 03:49:48', 'Đã Huỷ', 'Nguyễn Thị An', '+84 912 345 678', 'nguyenthi.an@mailinator.com', '123 Đường ABC, Quận 1, TP.Hồ Chí Minh'),
+(1, 'Bún Riêu Cua', '40000', 3, '120000', '2023-02-15 03:49:48', 'Đã huỷ', 'Nguyễn Thị An', '+84 912 345 678', 'nguyenthi.an@mailinator.com', '123 Đường ABC, Quận 1, TP.Hồ Chí Minh'),
 
-(2, 'Bánh Mì Ngon', '25000', 4, '100000', '2023-04-20 03:52:43', 'Đã giao', 'Trần Văn Bình', '+84 987 654 321', 'tranvanbinh@mailinator.com', '456 Đường XYZ, Quận 3, TP.Hồ Chí Minh'),
+(2, 'Bánh Mì Ngon', '25000', 4, '100000', '2023-04-20 03:52:43', 'Đã giao hàng', 'Trần Văn Bình', '+84 987 654 321', 'tranvanbinh@mailinator.com', '456 Đường XYZ, Quận 3, TP.Hồ Chí Minh'),
 
-(3, 'Bánh Tráng Trộn', '20000', 2, '40000', '2023-08-10 04:07:17', 'Đã giao', 'Lê Thị Mai', '+84 933 222 111', 'lethimai@mailinator.com', '789 Đường KLM, Quận 5, TP.Hồ Chí Minh');
+(3, 'Bánh Tráng Trộn', '20000', 2, '40000', '2023-08-10 04:07:17', 'Đã giao hàng', 'Lê Thị Mai', '+84 933 222 111', 'lethimai@mailinator.com', '789 Đường KLM, Quận 5, TP.Hồ Chí Minh');
 
 --
 -- Indexes for dumped tables

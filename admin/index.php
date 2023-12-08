@@ -65,7 +65,7 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <h1 class="card-title"><?php echo $total_revenue ? $total_revenue . 'vnd' : '0vnd'; ?></h1>
-                        <p class="card-text">Doanh thu đã tạo</p>
+                        <p class="card-text">Doanh thu</p>
                     </div>
                 </div>
             </div>

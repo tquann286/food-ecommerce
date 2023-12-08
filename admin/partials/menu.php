@@ -18,12 +18,12 @@ include('login-check.php');
     <div class="menu text-center">
         <div class="wrapper">
             <ul>
-                <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="manage-admin.php">Admin</a></li>
-                <li><a href="manage-category.php">Danh mục</a></li>
-                <li><a href="manage-food.php">Món ăn</a></li>
-                <li><a href="manage-order.php">Đơn hàng</a></li>
-                <li><a href="logout.php">Đăng xuất</a></li>
+                <li><a href="/admin/index.php">Trang chủ</a></li>
+                <li><a href="/admin/manage-admin.php">Admin</a></li>
+                <li><a href="/admin/manage-category.php">Danh mục</a></li>
+                <li><a href="/admin/manage-food.php">Món ăn</a></li>
+                <li><a href="/admin/manage-order.php">Đơn hàng</a></li>
+                <li><a href="/admin/logout.php">Đăng xuất</a></li>
             </ul>
         </div>
     </div>
