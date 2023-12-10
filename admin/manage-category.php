@@ -70,7 +70,7 @@
 
                 if ($count > 0) {
                     while ($row = mysqli_fetch_assoc($res)) {
-                        // Create an instance of the Category class
+                        // Tạo danh mục
                         $category = new Category($row['title'], $row['image_name'], $row['featured'], $row['active']);
                         ?>
 

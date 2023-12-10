@@ -1,6 +1,6 @@
 <?php include('partials/menu.php'); ?>
 
-<!-- Phần Nội dung Chính Bắt Đầu -->
+<!-- Phần Nội Dung Chính Bắt Đầu -->
 <div class="main-content">
     <div class="container">
         <h1 class="mt-3 mb-5">Trang chủ</h1>

@@ -1,3 +1,3 @@
 # food-ecommerce
 
-Đồ án này chỉ nhằm mục đích học tập
+Đồ án cuối kỳ học phần: Phát triển ứng dụng Web

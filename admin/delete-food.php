@@ -9,7 +9,7 @@ if (isset($_GET['id']) && isset($_GET['image_name'])) {
   $food = new Food('', '', '', $image_name, '', '', '');
 
   if ($image_name != "") {
-    // Remove the image
+    // Đổi image
     $removeImage = $food->removeImage();
 
     if (!$removeImage) {
@@ -21,7 +21,7 @@ if (isset($_GET['id']) && isset($_GET['image_name'])) {
 
   $food->setId($id);
 
-  // Delete food from the database
+  // Xóa food trong database
   $deleteFood = $food->deleteFood($conn);
 
   if ($deleteFood) {

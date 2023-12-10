@@ -69,7 +69,6 @@ include('oop/Admin.php');
                                     <?php echo $admin->getUsername(); ?>
                                 </td>
                                 <td>
-                                    <!-- You can perform additional actions or display more information here -->
                                     <a href="<?php echo SITEURL; ?>admin/update-password.php?id=<?php echo $rows['id']; ?>"
                                         class="btn btn-primary">Đổi Mật khẩu</a>
                                     <a href="<?php echo SITEURL; ?>admin/update-admin.php?id=<?php echo $rows['id']; ?>"

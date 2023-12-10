@@ -14,7 +14,6 @@ include('oop/Order.php');
     if (isset($_GET['id'])) {
       $id = $_GET['id'];
 
-      // Create an instance of the Order class
       $order = new Order('','','','','','','','','','','');
       $orderDetails = $order->getOrderById($id);
 
@@ -113,25 +112,22 @@ include('oop/Order.php');
 
     <?php
     if (isset($_POST['submit'])) {
-      // Process and update data here
+      // Xử lý và cập nhật dữ liệu
     
       $id = $_POST['id'];
       $price = $_POST['price'];
       $qty = $_POST['qty'];
-
       $total = $price * $qty;
-
       $status = $_POST['status'];
-
       $customer_name = $_POST['customer_name'];
       $customer_contact = $_POST['customer_contact'];
       $customer_email = $_POST['customer_email'];
       $customer_address = $_POST['customer_address'];
 
-      // Update order using Order class method
+      // Cập nhật bằng phương thức trong class Order
       $updateResult = $order->updateOrder($id, $qty, $total, $status, $customer_name, $customer_contact, $customer_email, $customer_address);
 
-      // Check if the update was successful
+      // Kiểm tra cập nhật
       if ($updateResult) {
         $_SESSION['update'] = "<div class='success'>Đơn Hàng Đã Cập Nhật Thành Công.</div>";
         header('location:' . SITEURL . 'admin/manage-order.php');

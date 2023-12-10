@@ -100,7 +100,7 @@ include('oop/Food.php');
         $food->uploadImage('image');
       }
 
-      // Insert into the database
+      // Thêm vào database
       $result = $food->addFood($conn);
 
       if ($result) {

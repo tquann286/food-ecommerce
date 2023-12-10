@@ -16,7 +16,6 @@ class Category
     $this->active = $active;
   }
 
-  // Getter methods
   public function getId()
   {
     return $this->id;

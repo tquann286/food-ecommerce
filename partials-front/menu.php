@@ -32,9 +32,6 @@
           <li>
             <a href="<?php echo SITEURL; ?>foods.php">Món ăn</a>
           </li>
-          <!-- <li>
-            <a href="#">Liên hệ</a>
-          </li> -->
         </ul>
       </div>
 

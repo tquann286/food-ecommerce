@@ -34,13 +34,12 @@ include('oop/Order.php');
 
             <tbody>
                 <?php
-                // Retrieve orders using the Order class method
+                // Truy xuất dữ liệu trong class Order
                 $orders = Order::getAllOrders();
                 $sn = 1;
 
                 if (!empty($orders)) {
                     foreach ($orders as $order) {
-                        // Retrieve order details using the getter methods
                         $id = $order->getId();
                         $food = $order->getFood();
                         $price = $order->getPrice();
