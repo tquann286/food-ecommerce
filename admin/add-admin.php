@@ -1,8 +1,6 @@
 <?php
 include('partials/menu.php');
 include('oop/Admin.php');
-
-
 ?>
 
 <div class="main-content">
@@ -58,14 +56,16 @@ include('oop/Admin.php');
   </div>
 </div>
 
+<?php
+  if (isset($_POST['submit'])) {
+    $full_name = $_POST['full_name'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $admin = new Admin($full_name, $username, $password);
+    $admin->insertAdmin($conn);
+  } 
+?>
+
 <?php include('partials/footer.php'); ?>
 
-<?php
-if (isset($_POST['submit'])) {
-  $full_name = $_POST['full_name'];
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-
-  $admin = new Admin($full_name, $username, $password);
-  $admin->insertAdmin($conn);
-} ?>

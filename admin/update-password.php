@@ -74,10 +74,7 @@ if (isset($_POST['submit'])) {
 
     if ($count == 1) {
       if ($new_password == $confirm_password) {
-        $sql2 = "UPDATE tbl_admin SET 
-                                password='$new_password' 
-                                WHERE id=$id
-                            ";
+        $sql2 = "UPDATE tbl_admin SET password='$new_password' WHERE id=$id";
 
         $res2 = mysqli_query($conn, $sql2);
 
